@@ -1,0 +1,13 @@
+>>> from Qwt4.qplt import *
+>>> x = arange(-2*pi, 2*pi, 0.01)
+>>> p = Plot(Curve(x, cos(x), Pen(Magenta, 2), "cos(x)"),
+...  Axis(Bottom, "x axis"),
+...  Axis(Left, "y axis"),
+...  Axis(Right, Logarithmic),
+...  Curve(x, exp(x), Pen(Red), "exp(x)", Right),
+...  ("PyQwt demo based on Qwt-%s (http://qwt.sf.net)"
+...   % Qwt.QWT_VERSION_STR))
+>>> x = x[0:-1:10]
+>>> p.plot(Curve(x, cos(x-pi/4), Symbol(Circle, Yellow), "circle"),
+...  Curve(x, cos(x+pi/4), Pen(Blue), Symbol(Square, Cyan), "square"))
+>>>
