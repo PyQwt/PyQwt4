@@ -1,0 +1,8 @@
+iqt4qt3
+qwt4qt3
+tmp-iqt4qt3
+tmp-qwt4qt3
+*.pyc
+Makefile
+qwt_version_info*
+size_t_check*
