@@ -1,0 +1,33 @@
+# MANIFEST template file to make a distribution tarball
+
+# Package stuff
+include COPYING* MANIFEST.in GNUmakefile *.patch
+
+# Documentation
+graft Doc/html/pyqwt
+
+# PyQwt python code
+graft qt3lib
+
+# configure
+include configure/configure.py
+
+# examples
+graft qt3examples
+recursive-exclude qt3examples *.html *.png *.pyc *cvsignore* *~
+
+# support code
+graft support
+recursive-exclude suppport *cvsignore* *~
+
+# qwt-4.2.0
+graft qwt-4.2.0
+recursive-exclude qwt-cvs *~
+
+# sip files
+graft sip
+recursive-exclude sip *cvsignore* *~
+
+# Local Variables: ***
+# mode: sh ***
+# End: ***

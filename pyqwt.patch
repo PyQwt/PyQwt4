@@ -1,0 +1,41 @@
+--- qwt-4.2.0/src/qwt_plot.cpp.pyqwt	2004-11-16 21:12:15.000000000 +0100
++++ qwt-4.2.0/src/qwt_plot.cpp	2006-03-14 19:51:13.000000000 +0100
+@@ -9,6 +9,7 @@
+ 
+ // vim: expandtab
+ 
++#include <qapplication.h>
+ #include <qlabel.h>
+ #include <qpainter.h>
+ #include <qfocusdata.h>
+@@ -371,6 +372,9 @@
+     setAutoReplot(FALSE);
+ 
+     updateAxes();
++    // Force the scales to resize to prevent that
++    // the scales and canvas are drawn with different maps.
++    QApplication::sendPostedEvents(this, QEvent::LayoutHint);
+ 
+     d_canvas->invalidateCache();
+     d_canvas->repaint(d_canvas->contentsRect(), FALSE);
+--- qwt-4.2.0/include/qwt_legend.h.pyqwt	2006-03-14 21:48:04.000000000 +0100
++++ qwt-4.2.0/include/qwt_legend.h	2006-03-14 21:49:10.000000000 +0100
+@@ -38,7 +38,7 @@
+   A legend item
+   \sa QwtLegend, QwtCurve
+ */
+-class QwtLegendItem
++class QWT_EXPORT QwtLegendItem
+ {
+ public:
+     /*!
+--- qwt-4.2.0/include/qwt_event_pattern.h.pyqwt	2004-11-16 21:12:14.000000000 +0100
++++ qwt-4.2.0/include/qwt_event_pattern.h	2006-03-14 19:51:13.000000000 +0100
+@@ -10,6 +10,7 @@
+ #ifndef QWT_EVENT_PATTERN
+ #define QWT_EVENT_PATTERN 1
+ 
++#include <qnamespace.h>
+ #include "qwt_array.h"
+ 
+ class QMouseEvent;
