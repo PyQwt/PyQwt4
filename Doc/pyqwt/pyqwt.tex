@@ -78,6 +78,7 @@
 %\renewcommand{\Future}{}
 
 \newcommand{\Blurb}{
+\Future{}
 PyQwt is a set of Python bindings for the \Qwt{} C++ class library which
 extends the Qt framework with widgets for scientific, engineering and financial
 applications.   It provides a widget to plot 2-dimensional data and various
@@ -100,13 +101,13 @@ The main features of PyQwt are:
   GUI Python application or in an interactive Python session.
 
 \item
-  it runs on POSIX, MacOS/X and Windows (any operating system supported by Qt
+  it runs on \POSIX, MacOS/X and Windows (any operating system supported by Qt
   and Python).
 \end{itemize}
 }
 
 
-\title{PyQwt Manual}
+\title{PyQwt4 Manual}
 
 \author{Gerard Vermeulen}
 
@@ -126,6 +127,7 @@ The main features of PyQwt are:
 \fi
 
 
+\Future{}
 \input{copyright}
 \begin{abstract}
 \noindent
@@ -225,10 +227,12 @@ programs as well as from the Command Line Interpreter (CLI).
 This section addresses:
 \begin{itemize}
 \item
-  the CLI facilities (iqt, PyCute, qwt.qplt),
+  subsection \ref{iqt-intro} and \ref{intro-qplt-plot} the modules
+  \module{Qwt4.iqt} and \module{Qwt4.qplt} which facilite the use of PyQwt from
+  the command line interpreter.
 \item
-  the functions to convert \class{QImage} instances to Numeric and numarray
-  arrays and vice versa.
+  subsection \ref{qwt-qimage} describes the functions to convert
+  \class{QImage} instances to NumPy/numarray/Numeric arrays and vice versa.
 \end{itemize}
 
 The documentation for writing GUI programs consists of the
@@ -549,11 +553,17 @@ Feedback, please.
 \chapter{Installation
   \label{installation}}
 
+\Future{}
 
 \section{Prerequisites
   \label{prerequisites}}
 
 \Future{}
+
+\begin{notice}[note]
+  You can install PyQwt-4.2.1 compiled for Qt3 side by side with PyQwt5
+  compiled for Qt3 and Qt4 (after the release of PyQwt5).
+\end{notice}
 
 Build prerequisites for \PyQwtTarGz{}:
 \begin{enumerate}
@@ -587,20 +597,34 @@ Build prerequisites for \PyQwtTarGz{}:
 \item
   Invoke the commands:
 \begin{verbatim}
-cd PyQwt-5.0
+cd PyQwt-4.2.1
 cd configure
-python configure.py -Q ../qwt-cvs
+python configure.py -Q ../qwt-4.2.0
 make
 make install
 \end{verbatim}
+  to compile and link the Qwt sources statically with PyQwt, or:
+\begin{verbatim}
+cd PyQwt-4.2.1
+cd configure
+python configure.py -Q -I path/to/qwt/include/files -L /path/to/qwt/library
+make
+make install
+\end{verbatim}
+  to link the Qwt library dynamically with PyQwt.
   This assumes that the correct Python interpreter is on your path. Replace
   \strong{make} by \strong{nmake}, if you use MSVC or MSVC.net.
-  The commands build PyQwt against the included Qwt CVS snapshot and install
-  PyQwt.
   Test the installation by playing with the example programs.
 \end{enumerate}
 
-Contact the \mailinglist{}, if you run into problems.
+\begin{notice}[note]
+If you run into problems, create two log files
+\begin{verbatim}
+python configure.py --your --options > configure.log
+make > make.log
+\end{verbatim}
+and send the log files to the \mailinglist{}.
+\end{notice}
 
 \begin{notice}[note]
   Check if all development packages have been installed when make produces
@@ -648,6 +672,16 @@ Undocumented classes have not yet been implemented or are still experimental.
 
 \begin{classdesc*}{QwtArrayData}
   is fully implemented.
+
+  \begin{cfuncdesc}{}{QwtArrayData}{
+      const double *x, const double *y, size_t size}
+    is implemented as
+    \begin{verbatim}
+data = QwtArrayData(x, y)
+    \end{verbatim}
+    where \var{x} and \var{y} can be any combination of lists, tuples and
+    Numerical Python arrays.  The data is copied to C++ data types.
+  \end{cfuncdesc}
 \end{classdesc*}
 
 \begin{classdesc*}{QwtArrayDouble}
