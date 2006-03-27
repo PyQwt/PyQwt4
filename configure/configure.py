@@ -898,7 +898,7 @@ if __name__ == '__main__':
     except Die, info:
         print info
         sys.exit(1)
-    except SystemExit:
+    except:
         # catch the optparse --help option
         for entry in traceback.extract_tb(sys.exc_info()[-1]):
             if 'optparse.py' in entry[0]:
