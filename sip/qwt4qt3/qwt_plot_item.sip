@@ -74,7 +74,7 @@ class QwtPlotMappedItem: QwtPlotItem
 
 public:
     virtual ~QwtPlotMappedItem();
-    QwtPlotMappedItem(QwtPlot*, bool = TRUE);
+    QwtPlotMappedItem(QwtPlot* /TransferThis/, bool = TRUE);
     void setAxis(int, int);
     void setXAxis(int);
     int xAxis() const;
