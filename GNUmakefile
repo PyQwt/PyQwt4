@@ -24,7 +24,7 @@ all:
 
 all-trace:
 	cd configure \
-	&& python configure.py --tracing -Q $(QWT) -j $(JOBS) \
+	&& python configure.py --trace -Q $(QWT) -j $(JOBS) \
 	&& $(MAKE) -j $(JOBS)
 
 symlinks:
