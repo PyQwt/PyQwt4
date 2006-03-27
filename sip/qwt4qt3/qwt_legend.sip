@@ -55,10 +55,10 @@ public:
     int identifierMode() const;
     QWidget* contentsWidget();
     // dead code: const QWidget* contentsWidget() const;
-    void insertItem(QWidget*, long);
+    void insertItem(QWidget* /Transfer/, long);
     QWidget* findItem(long);
     // dead code: const QWidget* findItem(long) const;
-    QWidget* takeItem(long);
+    QWidget* takeItem(long) /TransferBack/;
     // FIXME: virtual QWidgetIntDictIt itemIterator() const;
     long key(const QWidget*) const;
     void clear();

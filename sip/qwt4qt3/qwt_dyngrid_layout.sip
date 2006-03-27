@@ -46,7 +46,7 @@ public:
     uint maxCols() const;
     uint numRows() const;
     uint numCols() const;
-    virtual void addItem(QLayoutItem*);
+    virtual void addItem(QLayoutItem* /Transfer/);
     virtual QLayoutIterator iterator();
     virtual int maxItemWidth() const;
     virtual void setGeometry(const QRect&);

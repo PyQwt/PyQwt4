@@ -64,7 +64,7 @@ public:
     void setTitleDist(int);
     int titleDist() const;
     void setScaleDiv(const QwtScaleDiv&);
-    void setScaleDraw(QwtScaleDraw*);
+    void setScaleDraw(QwtScaleDraw* /Transfer/);
     const QwtScaleDraw* scaleDraw() const;
     void setLabelFormat(char, int, int);
     void labelFormat(char& /Out/, int& /Out/, int& /Out/) const;
