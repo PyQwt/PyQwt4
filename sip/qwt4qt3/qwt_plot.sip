@@ -89,8 +89,8 @@ public:
     const QColor& canvasBackground() const;
     void setCanvasLineWidth(int);
     int canvasLineWidth() const;
-    // FIXME: QwtPlotCurveIterator curveIterator() const;
-    // FIXME: QwtPlotMarkerIterator markerIterator() const;
+    QwtPlotCurveIterator curveIterator() const;
+    QwtPlotMarkerIterator markerIterator() const;
     QwtDiMap canvasMap(int) const;
     double invTransform(int, int) const;
     int transform(int, double) const;
@@ -99,7 +99,7 @@ public:
     QwtPlotCurve* curve(long);
     // dead code: const QwtPlotCurve* curve(long) const;
     QwtArrayLong curveKeys() const;
-    // FIXME:long closestCurve(int, int, int&) const;
+    // FIXME: long closestCurve(int, int, int&) const;
     long closestCurve(int, int, int& /Out/, double& /Out/, double& /Out/, int& /Out/) const;
     bool setCurveBaseline(long, double);
     double curveBaseline(long) const;

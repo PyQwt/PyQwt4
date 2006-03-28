@@ -62,6 +62,9 @@
 
 %Include QwtTypes.sip
 
+// Handwritten
+%Include QwtDictIterator.sip
+
 // Converter code
 %Include common/QwtMap.sip
 %Include common/QwtMemArray.sip
@@ -102,7 +105,7 @@
 %Include qwt_plot.sip
 %Include qwt_plot_canvas.sip
 %Include qwt_plot_classes.sip
-// FIXME: %Include qwt_plot_dict.sip
+// %Include qwt_plot_dict.sip replaced by QwtDict
 %Include qwt_plot_item.sip
 %Include qwt_plot_layout.sip
 %Include qwt_plot_picker.sip

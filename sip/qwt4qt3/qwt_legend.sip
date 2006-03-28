@@ -59,7 +59,7 @@ public:
     QWidget* findItem(long);
     // dead code: const QWidget* findItem(long) const;
     QWidget* takeItem(long) /TransferBack/;
-    // FIXME: virtual QWidgetIntDictIt itemIterator() const;
+    /* FIXME: virtual */ QWidgetIntDictIt itemIterator() const;
     long key(const QWidget*) const;
     void clear();
     bool isEmpty() const;
