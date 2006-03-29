@@ -541,7 +541,7 @@ print the plot.
 \begin{funcdesc}{to_np_array}{image}
   Convert \var{image} of type \class{QImage} to a Numeric array. This function
   has been deprecated and is is only present if Numeric has been detected when
-  building PyQwt. Use \function{toNumpy(aQImage)}
+  building PyQwt. Use \function{toNumeric(aQImage)}
 \end{funcdesc}
 
 \begin{notice}[warning]
@@ -665,6 +665,11 @@ Undocumented classes have not yet been implemented or are still experimental.
 
 \Future{}
 
+
+\begin{classdesc*}{QWidgetIntDictIt}
+  is a wrapper for \ctype{QWidgetIntDictIt} and cannot be instantianated from
+  Python, see \ref{dictit}.
+\end{classdesc*}
 
 \begin{classdesc*}{QwtAnalogClock}
   is fully implemented.
@@ -846,6 +851,10 @@ mode, direction = wheel.getScrollMode(point)
 
 \begin{classdesc*}{QwtLegend}
   is fully implemented.
+
+  \begin{cfuncdesc}{virtual QWidgetIntDictIt}{itemIterator}{}
+    is implented without the virtual specifier.
+  \end{cfuncdesc}
 \end{classdesc*}
 
 \begin{classdesc*}{QwtLegendButton}
@@ -910,6 +919,28 @@ mode, direction = wheel.getScrollMode(point)
 
 \begin{classdesc*}{QwtPlot}
 
+  \begin{cfuncdesc}{void}{closestCurve}{
+      int xpos, int ypos, int \&distance}
+    is not exposed to Python.
+  \end{cfuncdesc}
+
+  \begin{cfuncdesc}{void}{closestCurve}{
+      int xpos, int ypos, int \&distance,
+      double \&xval, double \&yval, int \&index}
+    is implemented as
+    \begin{verbatim}
+dist, xval, yval, index = plot.closestCurve(xpos, ypos)
+    \end{verbatim}
+  \end{cfuncdesc}
+
+  \begin{cfuncdesc}{void}{closestMarker}{
+      int xpos, int ypos, int \&distance}
+    is implemented as
+    \begin{verbatim}
+dist = plot.closestMarker(xpos, ypos)
+    \end{verbatim}
+  \end{cfuncdesc}
+
   \begin{cfuncdesc}{void}{print}{
       QPrinter \&printer, const QwtPlotPrintFilter \&filter}
     is implemented as
@@ -958,6 +989,11 @@ length, first, last = curve.verifyRange(i1, i2)
 
 \end{classdesc*}
 
+\begin{classdesc*}{QwtPlotCurveIterator}
+  is a wrapper for \ctype{QwtPlotCurveIterator} and cannot be instantianated
+  from Python, see \ref{dictit}.
+\end{classdesc*}
+
 \begin{classdesc*}{QwtPlotGrid}
   is fully implemented.
 \end{classdesc*}
@@ -980,6 +1016,11 @@ length, first, last = curve.verifyRange(i1, i2)
 
 \begin{classdesc*}{QwtPlotMarker}
   is fully implemented.
+\end{classdesc*}
+
+\begin{classdesc*}{QwtPlotMarkerIterator}
+  is a wrapper for \ctype{QPlotMarkerIterator} and cannot be instantianated
+  from Python, see \ref{dictit}.
 \end{classdesc*}
 
 \begin{classdesc*}{QwtPlotPicker}
@@ -1008,6 +1049,23 @@ length, first, last = curve.verifyRange(i1, i2)
 
 \begin{classdesc*}{QwtScale}
   is fully implemented.
+
+  \begin{cfuncdesc}{void}{labelFormat}{
+      char \&format, int \&precision, int \&fieldwidth}
+    is implemented as:
+    \begin{verbatim}
+format, precision, fieldwidth = scale.labelFormat()
+    \end{verbatim}    
+  \end{cfuncdesc}
+
+  \begin{cfuncdesc}{void}{minBorderDist}{
+      int \&start, int \&end}
+    is implemented as:
+    \begin{verbatim}
+start, end = scale.minBorderDist()
+    \end{verbatim}    
+  \end{cfuncdesc}
+
 \end{classdesc*}
 
 \begin{classdesc*}{QwtScaleDiv}
@@ -1016,6 +1074,24 @@ length, first, last = curve.verifyRange(i1, i2)
 
 \begin{classdesc*}{QwtScaleDraw}
   is fully implemented.
+
+  \begin{cfuncdesc}{void}{labelFormat}{
+      char \&format, int \&precision, int \&fieldwidth}
+    is implemented as:
+    \begin{verbatim}
+format, precision, fieldwidth = scaleDraw.labelFormat()
+    \end{verbatim}    
+  \end{cfuncdesc}
+
+  \begin{cfuncdesc}{virtual void}{labelPlacement}{
+      const QPFontMetrics \&metrics, double value, QPoint \&position,
+      int \&alignment, double \&rotation}
+    is implemented as:
+    \begin{verbatim}
+alignment, rotation = scaleDraw.labelPlacement(metrics, value, position)
+    \end{verbatim}    
+  \end{cfuncdesc}
+
 \end{classdesc*}
 
 \begin{classdesc*}{QwtScaleIf}
@@ -1175,6 +1251,76 @@ Python slots \function{__getitem__}, \function{__len__} and
 For instance:
 
 \verbatiminput{Qwt4.QwtArrayDouble.example}
+
+\section{Wrappers for dictionary iterators \label{dictit}}
+
+PyQwt has a partial interface to the following dictionary iterators:
+\begin{itemize}
+\item
+  \class{QWidgetIntDictIt}
+\item
+  \class{QwtCurveDictIterator}
+\item
+  \class{QwtMarkerDictIterator}
+\end{itemize}
+
+The iterators cannot be instantianated from Python, but are returned by a few
+methods.  They are not equivalent to Python iterators.  An usage example is:
+\begin{verbatim}
+>>> plot = qplt.testPlot()
+>>> iterator = plot.curveIterator()
+>>> curve = iterator.next()
+>>> while curve:
+...  print curve
+...  curve = iterator.next()
+...
+<Qwt4.Qwt.QwtPlotCurve object at 0xb28c8a2c>
+<Qwt4.Qwt.QwtPlotCurve object at 0xb28c8e2c>
+<Qwt4.Qwt.QwtPlotCurve object at 0xb28c8a2c>
+<Qwt4.Qwt.QwtPlotCurve object at 0xb28c8e2c>
+>>>
+\end{verbatim}
+
+\newcommand{\DictIt}[1]{
+  \begin{classdesc*}{#1}
+    \begin{methoddesc}[#1]{count}{}
+      Returns the number of items in the dictionary over which the iterator is
+      operating. 
+    \end{methoddesc}
+
+    \begin{methoddesc}[#1]{current}{}
+      Returns the current item of the iterator.
+    \end{methoddesc}
+
+    \begin{methoddesc}[#1]{isEmpty}{}
+      Returns \code{True} if the dictionary is empty, i.e. count() == 0;
+      otherwise returns \code{False}.
+    \end{methoddesc}
+
+    \begin{methoddesc}[#1]{toFirst}{}
+      Resets the iterator, making the first item the first current item. First
+      in this context means first in the arbitrary traversal order. Returns
+      this item.
+      
+      If the dictionary is empty it sets the current item to \code{None} and
+      returns \code{None}.
+    \end{methoddesc}
+
+    \begin{methoddesc}[#1]{next}{}
+      Makes the next item current and returns the original current item. 
+
+      If the current iterator item was the last item in the dictionary or if it
+      was \code{None}, \code{None} is returned. 
+    \end{methoddesc}
+  \end{classdesc*}
+}
+
+\DictIt{QWidgetIntDictIt}
+
+\DictIt{QwtPlotCurveIterator}
+
+\DictIt{QwtPlotMarkerIterator}
+
 
 
 \input{pyqwt.ind}
