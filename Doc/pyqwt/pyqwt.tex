@@ -1083,6 +1083,16 @@ format, precision, fieldwidth = scaleDraw.labelFormat()
     \end{verbatim}    
   \end{cfuncdesc}
 
+  \begin{cfuncdesc}{void}{tickLength}{
+      unsigned int \&minLength,
+      unsigned int \&medLength,
+      unsigned int \&majLength}
+    is implemented as:
+    \begin{verbatim}
+minLength, medLength, majLength = scaleDraw.tickLength()
+    \end{verbatim}    
+  \end{cfuncdesc}
+
   \begin{cfuncdesc}{virtual void}{labelPlacement}{
       const QPFontMetrics \&metrics, double value, QPoint \&position,
       int \&alignment, double \&rotation}
