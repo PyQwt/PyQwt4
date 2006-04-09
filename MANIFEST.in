@@ -1,7 +1,7 @@
 # MANIFEST template file to make a distribution tarball
 
 # Package stuff
-include COPYING* MANIFEST.in GNUmakefile *.patch
+include COPYING* MANIFEST.in GNUmakefile THANKS *.patch
 
 # Documentation
 graft Doc/html/pyqwt
