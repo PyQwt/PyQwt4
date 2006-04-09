@@ -42,7 +42,7 @@ public:
     virtual ~QwtPlotItem();
     void reparent(QwtPlot*);
     QwtPlot* parentPlot();
-    const QwtPlot* parentPlot() const;
+    // dead code: const QwtPlot* parentPlot() const;
     virtual void setEnabled(bool);
     bool enabled() const;
     virtual void itemChanged();

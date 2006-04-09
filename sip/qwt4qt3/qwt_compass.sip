@@ -42,7 +42,7 @@ public:
     void setRose(QwtCompassRose* /Transfer/);
     // dead code: const QwtCompassRose* rose() const;
     QwtCompassRose* rose();
-    const QMap<double,QString>& labelMap() const;
+    // dead code: const QMap<double,QString>& labelMap() const;
     QMap<double,QString>& labelMap();
     void setLabelMap(const QMap<double,QString>&);
 protected:

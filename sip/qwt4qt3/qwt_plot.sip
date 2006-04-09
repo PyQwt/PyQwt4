@@ -157,7 +157,7 @@ sipRes = sipCpp->QwtPlot::setCurveData(a0, xArray, yArray);
     void setGridMinPen(const QPen&);
     const QPen& gridMinPen() const;
     QwtPlotGrid& grid();
-    const QwtPlotGrid& grid() const;
+    // dead code: const QwtPlotGrid& grid() const;
     void setAxisAutoScale(int);
     bool axisAutoScale(int) const;
     void enableAxis(int, bool = TRUE);
