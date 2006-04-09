@@ -47,7 +47,7 @@ public:
     QwtPlotCanvas::FocusIndicator focusIndicator() const;
     void setCacheMode(bool);
     bool cacheMode() const;
-    // dead code: const QPixmap* cache() const;
+    // signature: const QPixmap* cache() const;
     void invalidateCache();
 protected:
     QwtPlotCanvas(QwtPlot* /TransferThis/);

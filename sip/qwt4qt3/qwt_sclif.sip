@@ -48,7 +48,7 @@ public:
     int scaleMaxMinor() const;
     int scaleMaxMajor() const;
     void setScaleDraw(QwtScaleDraw* /Transfer/);
-    // dead code: const QwtScaleDraw* scaleDraw() const;
+    // signature: const QwtScaleDraw* scaleDraw() const;
 protected:
     bool hasUserScale();
     virtual void scaleChange() = 0;
