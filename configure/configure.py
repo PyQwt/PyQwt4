@@ -540,6 +540,13 @@ def setup_iqt_build(configuration, options, package):
         )
 
     makefile._target = '_iqt'
+    makefile.extra_cflags.extend(options.extra_cflags)
+    makefile.extra_cxxflags.extend(options.extra_cxxflags)
+    makefile.extra_defines.extend(options.extra_defines)
+    makefile.extra_include_dirs.extend(options.extra_include_dirs)
+    makefile.extra_lflags.extend(options.extra_lflags)
+    makefile.extra_libs.extend(options.extra_libs)
+    makefile.extra_lib_dirs.extend(options.extra_lib_dirs)
     makefile.generate()
 
 # setup_iqt_build()
@@ -686,6 +693,7 @@ def setup_qwt4_build(configuration, options, package):
         warnings = 1,
         debug = options.debug,
         )
+
     makefile.extra_cflags.extend(options.extra_cflags)
     makefile.extra_cxxflags.extend(options.extra_cxxflags)
     makefile.extra_defines.extend(options.extra_defines)
@@ -693,8 +701,6 @@ def setup_qwt4_build(configuration, options, package):
     makefile.extra_lflags.extend(options.extra_lflags)
     makefile.extra_libs.extend(options.extra_libs)
     makefile.extra_lib_dirs.extend(options.extra_lib_dirs)
-    if configuration.sip_version < 0x040000:
-        makefile.extra_libs.insert(0, makefile.module_as_lib('qt'))
     makefile.generate()
 
 # setup_qwt5_build()
