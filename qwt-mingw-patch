@@ -1,0 +1,454 @@
+*** qwt-4.2.0-orig/include/qwt_compass.h	Tue Nov 16 15:12:14 2004
+--- qwt-4.2.0/include/qwt_compass.h	Wed Apr 12 09:09:41 2006
+***************
+*** 16,22 ****
+--- 16,25 ----
+  
+  #if defined(QWT_TEMPLATEDLL)
+  // MOC_SKIP_BEGIN
++ #ifndef QMAP_TEMPLATE_DOUBLE_QSTRING // by mjo3
++ #define QMAP_TEMPLATE_DOUBLE_QSTRING
+  template class QWT_EXPORT QMap<double, QString>;
++ #endif // end of QMAP_TEMPLATE_DOUBLE_QSTRING
+  // MOC_SKIP_END
+  #endif
+  
+*** qwt-4.2.0-orig/include/qwt_curve.h	Tue Nov 16 15:12:14 2004
+--- qwt-4.2.0/include/qwt_curve.h	Wed Apr 12 09:09:41 2006
+***************
+*** 23,29 ****
+--- 23,32 ----
+  
+  #if defined(QWT_TEMPLATEDLL)
+  // MOC_SKIP_BEGIN
++ #ifndef QWTARRAY_TEMPLATE_DOUBLE // by snoman
++ #define QWTARRAY_TEMPLATE_DOUBLE
+  template class QWT_EXPORT QwtArray<double>;
++ #endif // end of QWTARRAY_TEMPLATE_DOUBLE
+  // MOC_SKIP_END
+  #endif
+  
+*** qwt-4.2.0-orig/include/qwt_data.h	Tue Nov 16 15:12:14 2004
+--- qwt-4.2.0/include/qwt_data.h	Wed Apr 12 09:09:41 2006
+***************
+*** 18,25 ****
+--- 18,31 ----
+  
+  #if defined(QWT_TEMPLATEDLL)
+  // MOC_SKIP_BEGIN
++ #ifndef QWTARRAY_TEMPLATE_QWTDOUBLEPOINT  // by mjo3
++ #define QWTARRAY_TEMPLATE_QWTDOUBLEPOINT
+  template class QWT_EXPORT QwtArray<QwtDoublePoint>;
++ #endif //end of QWTARRAY_TEMPLATE_QWTDOUBLEPOINT
++ #ifndef QWTARRAY_TEMPLATE_DOUBLE  // by mjo3
++ #define QWTARRAY_TEMPLATE_DOUBLE
+  template class QWT_EXPORT QwtArray<double>;
++ #endif //end of QWTARRAY_TEMPLATE_DOUBLE
+  // MOC_SKIP_END
+  #endif
+  
+*** qwt-4.2.0-orig/include/qwt_event_pattern.h	Tue Nov 16 15:12:14 2004
+--- qwt-4.2.0/include/qwt_event_pattern.h	Wed Apr 12 09:09:41 2006
+***************
+*** 198,205 ****
+--- 198,211 ----
+  
+  #if defined(QWT_TEMPLATEDLL)
+  // MOC_SKIP_BEGIN
++ #ifndef QWTARRAY_TEMPLATE_MOUSEPATTERN // by mjo3
++ #define QWTARRAY_TEMPLATE_MOUSEPATTERN
+  template class QWT_EXPORT QwtArray<QwtEventPattern::MousePattern>;
++ #endif // end of QWTARRAY_TEMPLATE_MOUSEPATTERN
++ #ifndef QWTARRAY_TEMPLATE_KEYPATTERN // by mjo3
++ #define QWTARRAY_TEMPLATE_KEYPATTERN
+  template class QWT_EXPORT QwtArray<QwtEventPattern::KeyPattern>;
++ #endif // end of QWTARRAY_TEMPLATE_KEYPATTERN
+  // MOC_SKIP_END
+  #endif
+  
+*** qwt-4.2.0-orig/include/qwt_plot_zoomer.h	Tue Nov 16 15:12:14 2004
+--- qwt-4.2.0/include/qwt_plot_zoomer.h	Wed Apr 12 09:09:41 2006
+***************
+*** 18,24 ****
+--- 18,27 ----
+  
+  #if defined(QWT_TEMPLATEDLL)
+  // MOC_SKIP_BEGIN
++ #ifndef QVALUESTACK_TEMPLATE_QWTDOUBLERECT // by mjo3
++ #define QVALUESTACK_TEMPLATE_QWTDOUBLERECT
+  template class QWT_EXPORT QValueStack<QwtDoubleRect>;
++ #endif // end of QVALUESTACK_TEMPLATE_QWTDOUBLERECT
+  // MOC_SKIP_END
+  #endif
+  
+*** qwt-4.2.0-orig/include/qwt_scldiv.h	Tue Nov 16 15:12:14 2004
+--- qwt-4.2.0/include/qwt_scldiv.h	Wed Apr 12 09:09:41 2006
+***************
+*** 15,21 ****
+--- 15,24 ----
+  
+  #if defined(QWT_TEMPLATEDLL)
+  // MOC_SKIP_BEGIN
++ #ifndef QWTARRAY_TEMPLATE_DOUBLE // by mjo3
++ #define QWTARRAY_TEMPLATE_DOUBLE
+  template class QWT_EXPORT QwtArray<double>;
++ #endif  // end of QWTARRAY_TEMPLATE_DOUBLE
+  // MOC_SKIP_END
+  #endif
+  
+*** qwt-4.2.0-orig/./designer/qwtplugin.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./designer/qwtplugin.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 18,25 ****
+  INCLUDEPATH    += ../include 
+  DESTDIR         = plugins/designer
+  
+! unix:LIBS      += -L../lib -lqwt
+! win32:LIBS    += ../lib/qwt.lib 
+  
+  linux-g++:QMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 18,24 ----
+  INCLUDEPATH    += ../include 
+  DESTDIR         = plugins/designer
+  
+! LIBS      += -L../lib -lqwt
+  
+  linux-g++:QMAKE_CXXFLAGS += -fno-exceptions 
+  
+*** qwt-4.2.0-orig/./examples/bode/bode.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./examples/bode/bode.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 20,29 ****
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! unix:LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+- win32:LIBS     += ../../lib/qwt.lib
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 20,28 ----
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+*** qwt-4.2.0-orig/./examples/realtime_plot/realtime_plot.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./examples/realtime_plot/realtime_plot.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 20,29 ****
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! unix:LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+- win32:LIBS     += ../../lib/qwt.lib
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 20,28 ----
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+*** qwt-4.2.0-orig/./examples/cpuplot/cpuplot.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./examples/cpuplot/cpuplot.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 20,29 ****
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! unix:LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+- win32:LIBS     += ../../lib/qwt.lib
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 20,28 ----
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+*** qwt-4.2.0-orig/./examples/dials/dials.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./examples/dials/dials.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 20,29 ****
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! unix:LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+- win32:LIBS     += ../../lib/qwt.lib
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 20,28 ----
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+*** qwt-4.2.0-orig/./examples/linux/cpuload/cpuload.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./examples/linux/cpuload/cpuload.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 20,29 ****
+  INCLUDEPATH += ../../../include
+  DEPENDPATH  += ../../../include
+  
+! unix:LIBS += -L../../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+- win32:LIBS     += ../../../lib/qwt.lib
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 20,28 ----
+  INCLUDEPATH += ../../../include
+  DEPENDPATH  += ../../../include
+  
+! LIBS += -L../../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+*** qwt-4.2.0-orig/./examples/linux/meminfo/meminfo.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./examples/linux/meminfo/meminfo.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 20,29 ****
+  INCLUDEPATH += ../../../include
+  DEPENDPATH  += ../../../include
+  
+! unix:LIBS += -L../../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+- win32:LIBS     += ../../../lib/qwt.lib
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 20,28 ----
+  INCLUDEPATH += ../../../include
+  DEPENDPATH  += ../../../include
+  
+! LIBS += -L../../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+*** qwt-4.2.0-orig/./examples/linux/sysload/sysload.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./examples/linux/sysload/sysload.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 20,29 ****
+  INCLUDEPATH += ../../../include
+  DEPENDPATH  += ../../../include
+  
+! unix:LIBS += -L../../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+- win32:LIBS     += ../../../lib/qwt.lib
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 20,28 ----
+  INCLUDEPATH += ../../../include
+  DEPENDPATH  += ../../../include
+  
+! LIBS += -L../../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+*** qwt-4.2.0-orig/./examples/radio/radio.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./examples/radio/radio.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 20,29 ****
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! unix:LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+- win32:LIBS     += ../../lib/qwt.lib
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 20,28 ----
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+*** qwt-4.2.0-orig/./examples/event_filter/event_filter.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./examples/event_filter/event_filter.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 20,29 ****
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! unix:LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+- win32:LIBS     += ../../lib/qwt.lib
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 20,28 ----
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+*** qwt-4.2.0-orig/./examples/data_plot/data_plot.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./examples/data_plot/data_plot.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 20,29 ****
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! unix:LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+- win32:LIBS     += ../../lib/qwt.lib
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 20,28 ----
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+*** qwt-4.2.0-orig/./examples/sliders/sliders.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./examples/sliders/sliders.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 20,29 ****
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! unix:LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+- win32:LIBS     += ../../lib/qwt.lib
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 20,28 ----
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+*** qwt-4.2.0-orig/./examples/curvdemo1/curvdemo1.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./examples/curvdemo1/curvdemo1.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 20,29 ****
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! unix:LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+- win32:LIBS     += ../../lib/qwt.lib
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 20,28 ----
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+*** qwt-4.2.0-orig/./examples/curvdemo2/curvdemo2.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./examples/curvdemo2/curvdemo2.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 20,29 ****
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! unix:LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+- win32:LIBS     += ../../lib/qwt.lib
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 20,28 ----
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+*** qwt-4.2.0-orig/./examples/simple_plot/simple_plot.pro	Tue Nov 16 15:12:15 2004
+--- qwt-4.2.0/./examples/simple_plot/simple_plot.pro	Wed Apr 12 09:09:41 2006
+***************
+*** 20,29 ****
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! unix:LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+- win32:LIBS     += ../../lib/qwt.lib
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
+--- 20,28 ----
+  INCLUDEPATH += ../../include
+  DEPENDPATH  += ../../include
+  
+! LIBS += -L../../lib -lqwt
+  
+  win32:DEFINES  += QT_DLL QWT_DLL
+  
+  linux-g++:TMAKE_CXXFLAGS += -fno-exceptions 
+  
