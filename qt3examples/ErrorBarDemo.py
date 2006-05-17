@@ -3,18 +3,7 @@
 import sys
 from qt import *
 from Qwt4.Qwt import *
-
-# try to import scipy, Numeric, or numarray
-try:
-    from scipy import *
-except ImportError:
-    try:
-        from Numeric import *
-    except ImportError:
-        try:
-            from numarray import *
-        except ImportError:
-            raise ImportError, 'Failed to import scipy, Numeric, or numarray'
+from Qwt4.anynumpy import *
 
 
 class ErrorBarPlotCurve(QwtPlotCurve):

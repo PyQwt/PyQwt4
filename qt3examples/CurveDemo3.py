@@ -9,7 +9,7 @@
 import sys
 from qt import *
 from Qwt4.Qwt import *
-from Numeric import *
+from Qwt4.anynumpy import *
 
 Size=15
 USize=13

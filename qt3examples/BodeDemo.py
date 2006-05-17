@@ -2,8 +2,8 @@
 
 # The Python version of qwt-*/examples/bode
 
-# To get an impression of the expressive power of Numeric,
-# compare the Python and C++ versions of recalc()
+# Compare the Python and C++ versions of recalc() to get an impression of the
+# expressive power of the Numerical Python extensions.
 
 import sys
 from qt import *
