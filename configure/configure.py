@@ -286,7 +286,7 @@ def check_numpy(configuration, options, package):
 def check_compiler(configuration, options):
     """Check compiler specifics
     """
-    print 'Do not get upset by error messages in the next 4 compiler checks:'
+    print 'Do not get upset by error messages in the next 6 compiler checks:'
     
     makefile = sipconfig.Makefile(configuration)
     generator = makefile.optional_string('MAKEFILE_GENERATOR', 'UNIX')
@@ -307,7 +307,8 @@ def check_compiler(configuration, options):
         '// Uncomment one of the following four lines',
         ]
 
-    for ctype in ('int', 'long', 'unsigned int', 'unsigned long'):
+    for ctype in ('int', 'long', 'long long',
+                  'unsigned int', 'unsigned long', 'unsigned long long'):
         open(name, "w").write(program % ctype)
         print "Check if 'size_t' and '%s' are the same type:" % ctype
         if compile_qt_program(name, configuration):
