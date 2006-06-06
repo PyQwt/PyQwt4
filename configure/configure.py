@@ -293,7 +293,7 @@ def check_compiler(configuration, options):
     if generator in ['MSVC', 'MSVC.NET']:
         options.extra_cxxflags.extend(['-GR'])
 
-    program = os.linesep.join([
+    program = '\n'.join([
         r'#include <stddef.h>',
         r'class a { public: void f(size_t); };',
         r'void a::f(%s) {};',
@@ -327,8 +327,6 @@ def check_compiler(configuration, options):
                 '',
                 ])
 
-    # Warning: I have got two bug reports that SIP-4.4 does not parse \r\n on
-    # Windows (is this true?), so '\n'.join() instead of os.linesep.join(). 
     new = '\n'.join(new)
     types_sip = os.path.join(os.pardir, 'sip', options.qwt, 'QwtTypes.sip')
     if os.access(types_sip, os.R_OK):
@@ -405,7 +403,7 @@ def check_qwt(configuration, options):
         except OSError:
             pass
 
-    program = os.linesep.join([
+    program = '\n'.join([
         r'#include <stdio.h>',
         r'#include <qwt_global.h>',
         r'',
