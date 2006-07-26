@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import sys
+
 try:
     import Qwt4.iqt
 except ImportError:
@@ -15,7 +17,6 @@ from qt import QPixmap
 jobs = [
     'BodeDemo',
     'CPUplot',
-    'CPUloadDemo',
     'CliDemo',
     'CurveDemo1',
     'CurveDemo2',
@@ -25,7 +26,6 @@ jobs = [
     'ErrorBarDemo',
     'EventFilterDemo',
     'MapDemo',
-    'MemInfoDemo',
     'MultiDemo',
     'QwtImagePlotDemo',
     'RadioDemo',
@@ -33,6 +33,11 @@ jobs = [
     'SliderDemo',
     'StackOrder',
     ]
+
+if sys.platform == 'linux2':
+    jobs.extend(['CPUloadDemo',
+		 'MemInfoDemo',
+		 ])
 
 def expose(jobs, cache = {}):
     for job in jobs:
