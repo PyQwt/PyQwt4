@@ -31,7 +31,7 @@ class MinPackDemo(QWidget):
 
 	# initialize the noisy data
         scatter = 0.05
-        x = arrayrange(-5.0, 5.0, 0.1)
+        x = arange(-5.0, 5.0, 0.1)
         y = RandomArray.uniform(1.0-scatter, 1.0+scatter, shape(x)) * \
             function([1.0, 1.0, -2.0, 2.0], x)
 

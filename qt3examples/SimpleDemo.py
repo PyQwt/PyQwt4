@@ -26,7 +26,7 @@ class SimplePlot(QwtPlot):
 	self.setCurvePen(cSin, QPen(Qt.red))
 	self.setCurvePen(cCos, QPen(Qt.blue))
 	# calculate 3 NumPy arrays
-        x = arrayrange(0.0, 10.0, 0.1)
+        x = arange(0.0, 10.0, 0.1)
         y = sin(x)
         z = cos(x)
 	# copy the data

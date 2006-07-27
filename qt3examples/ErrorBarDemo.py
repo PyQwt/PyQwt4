@@ -238,7 +238,7 @@ def make():
     demo = QwtPlot("Errorbar Demonstation")
     demo.setCanvasBackground(Qt.white)
     # calculate data and errors for a curve with error bars
-    x = arange(0, 10.1, 0.5, Float)
+    x = arange(0, 10.1, 0.5)
     y = sin(x)
     dy = 0.2 * abs(y)
     # dy = (0.15 * abs(y), 0.25 * abs(y)) # uncomment for asymmetric error bars

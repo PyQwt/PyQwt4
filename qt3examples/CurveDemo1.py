@@ -66,7 +66,7 @@ class CurveDemo(QFrame):
         self.curves.append(curve)
 
         # attach data, using Numeric
-        self.x = arrayrange(0, 10.0, 10.0/SIZE)
+        self.x = arange(0, 10.0, 10.0/SIZE)
         self.y = sin(self.x)*cos(2*self.x)
         for curve in self.curves:
             curve.setData(self.x, self.y)

@@ -126,7 +126,7 @@ class QwtImagePlot(QwtPlot):
 	self.setCurvePen(cSin, QPen(Qt.green, 2))
 	self.setCurvePen(cCos, QPen(Qt.black, 2))
 	# calculate 3 NumPy arrays
-        x = arrayrange(-2*pi, 2*pi, 0.01)
+        x = arange(-2*pi, 2*pi, 0.01)
         y = pi*sin(x)
         z = 4*pi*cos(x)*cos(x)*sin(x)
 	# copy the data
