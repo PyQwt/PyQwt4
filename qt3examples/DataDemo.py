@@ -14,7 +14,7 @@ class DataPlot(QwtPlot):
         QwtPlot.__init__(self, *args)
 
         # Initialize data
-        self.x = arrayrange(0.0, 100.1, 0.5)
+        self.x = arange(0.0, 100.1, 0.5)
         self.y = zeros(len(self.x), Float)
         self.z = zeros(len(self.x), Float)
 
