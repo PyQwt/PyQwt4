@@ -1,7 +1,7 @@
 # MANIFEST template file to make a distribution tarball
 
 # Package stuff
-include ANNOUNCEMENT-4.2.1 CHANGES-4.2.1 COPYING*
+include ANNOUNCEMENT-4.2.2 CHANGES-4.2.2 COPYING*
 include MANIFEST.in GNUmakefile THANKS *.patch *.spec
 
 # Documentation
