@@ -36,6 +36,7 @@ class MapDemo(QMainWindow):
         QMainWindow.__init__(self, *args)
 
         self.plot = plot = QwtPlot(self)
+        plot.setCanvasBackground(Qt.white)
         self.setCentralWidget(plot)
 
         # Initialize map data

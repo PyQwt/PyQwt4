@@ -32,6 +32,8 @@ jobs = [
     'SimpleDemo',
     'SliderDemo',
     'StackOrder',
+    'SymbolPlotCurveDemo',
+    'WeightDemo',
     ]
 
 if sys.platform == 'linux2':

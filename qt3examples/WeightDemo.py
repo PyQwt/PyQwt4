@@ -100,6 +100,7 @@ class WeightPlot(QwtPlot):
 
     def __init__(self, *args):
         QwtPlot.__init__(self, *args)
+        self.setCanvasBackground(Qt.white)
 
         # Initialize data arrays
         num_data_points = 100
