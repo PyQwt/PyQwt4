@@ -16,14 +16,18 @@
   {http://pyqwt.sourceforge.net/snapshot}}
 \newcommand{\Sip}{\ulink{sip-4.4.5.tar.gz}
   {http://pyqwt.sourceforge.net/support/sip-4.4.5.tar.gz}}
+\newcommand{\SipSnapShot}{\ulink{SIP snapshot}
+  {http://www.riverbankcomputing.com/Downloads/Snapshots/sip4/}}
 \newcommand{\PyQtGpl}{\ulink{PyQt-x11-gpl-3.16.tar.gz}
   {http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.16-gpl.tar.gz}}
 \newcommand{\PyQtMac}{\ulink{PyQt-mac-gpl-3.16.tar.gz}
   {http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.16.tar.gz}}
+\newcommand{\PyQtSnapShot}{\ulink{PyQt3 snapshot}
+  {http://www.riverbankcomputing.com/Downloads/Snapshots/PyQt3}}
 \newcommand{\NumPy}{\ulink{NumPy}
   {http://numpy.scipy.org}}
-\newcommand{\NumPyTarGz}{\ulink{NumPy-1.0b5.tar.gz}
-  {http://prdownloads.sourceforge.net/numpy/numpy-1.0b5.tar.gz?download}}
+\newcommand{\NumPyTarGz}{\ulink{NumPy-1.0rc0.tar.gz}
+  {http://prdownloads.sourceforge.net/numpy/numpy-1.0rc0.tar.gz?download}}
 \newcommand{\numarray}{\ulink{numarray}
   {http://www.stsci.edu/resources/software_hardware/numarray}}
 \newcommand{\numarrayTarGz}{\ulink{numarray-1.5.2.tar.gz}
@@ -221,15 +225,14 @@ All this in C, for a manifold speedup with respect to pure Python.
 
 The PyQwt widgets can be used in Graphical User Interface (GUI)
 programs as well as from the Command Line Interpreter (CLI).
-This section addresses:
+This section contains:
 \begin{itemize}
 \item
-  subsection \ref{iqt-intro} and \ref{intro-qplt-plot} the modules
-  \module{Qwt4.iqt} and \module{Qwt4.qplt} which facilite the use of PyQwt from
-  the command line interpreter.
+  subsection \ref{iqt-intro} describing the module \module{Qwt4.iqt} which
+  facilitates the use of PyQt and PyQwt from the command line interpreter.
 \item
-  subsection \ref{qwt-qimage} describes the functions to convert
-  \class{QImage} instances to NumPy/numarray/Numeric arrays and vice versa.
+  subsection \ref{intro-qplt-plot} describes the module \module{Qwt4.qplt}
+  which provides a Pythonic wrapper over the QwtPlot class.
 \end{itemize}
 
 The documentation for writing GUI programs consists of the
@@ -505,46 +508,6 @@ print the plot.
   \end{itemize}
 \end{classdesc}
 
-\subsection{QImage and NumPy/numarray/Numeric arrays \label{qwt-qimage}}
-
-\Future{}
-
-\begin{funcdesc}{toImage}{array}
-  Convert \var{array} to a QImage, where \var{array} must be a two-dimensional
-  NumPy, numarray, or Numeric array of type UnsignedInt8 or UnsignedInt32.
-\end{funcdesc}
-
-\begin{funcdesc}{toNumarray}{image}
-  Convert \var{image} of type \class{QImage} to a numarray array. This function
-  is only present if numarray has been detected when building PyQwt.
-\end{funcdesc}
-
-\begin{funcdesc}{toNumeric}{image}
-  Convert \var{image} of type \class{QImage} to a Numeric array. This function
-  is only present if Numeric has been detected when building PyQwt.
-\end{funcdesc}
-
-\begin{funcdesc}{toNumpy}{image}
-  Convert \var{image} of type \class{QImage} to a NumPy array. This function
-  is only present if NumPy has been detected when building PyQwt.
-\end{funcdesc}
-
-\begin{funcdesc}{to_na_array}{image}
-  Convert \var{image} of type \class{QImage} to a Numarray array. This function
-  has been deprecated and is only present if Numarray has been detected when
-  building PyQwt.  Use \function{toNumarray(aQImage)}.
-\end{funcdesc}
-
-\begin{funcdesc}{to_np_array}{image}
-  Convert \var{image} of type \class{QImage} to a Numeric array. This function
-  has been deprecated and is is only present if Numeric has been detected when
-  building PyQwt. Use \function{toNumeric(aQImage)}
-\end{funcdesc}
-
-\begin{notice}[warning]
-Those functions ignore endianness and are untested on 64-bit platforms.
-Feedback, please.
-\end{notice}
 
 
 \chapter{Installation
@@ -559,23 +522,25 @@ Feedback, please.
 
 \begin{notice}[note]
   You can install PyQwt-4.2.2 compiled for Qt3 side by side with PyQwt5
-  compiled for Qt3 and Qt4 (after the release of PyQwt5).
+  compiled for Qt3 and Qt4.
 \end{notice}
 
 Build prerequisites for \PyQwtTarGz{}:
 \begin{enumerate}
   \item
     \ulink{Python}{http://www.python.org}.\\
-    Supported versions: Python-2.4.x, and -2.3.x.
+    Supported versions: Python-2.5.x, -2.4.x, and -2.3.x.
   \item
     \ulink{Qt}{http://www.trolltech.com}.\\
     Supported versions: Qt-3.3.x, and Qt-3.2.x.
   \item
     \Sip{}.\\
     Supported versions: sip-4.4.x,
+    Python-2.5 requires a \SipSnapShot{}.\\
   \item
     Either \PyQtGpl{}, or \PyQtMac{}.\\
     Supported versions: PyQt-3.16.x.
+    Python-2.5 requires a \PyQtSnapShot{}.\\
   \item
     \ReadMePatches{} for bug fixes and upgrades.
 \end{enumerate}
@@ -656,6 +621,43 @@ If a class is described as being \emph{fully implemented} then all non-private
 member functions and all public class variables have been implemented.
 
 Undocumented classes have not yet been implemented or are still experimental.
+
+
+\section{Function reference\label{functions}}
+
+\Future{}
+
+\begin{funcdesc}{toImage}{array}
+  Convert \var{array} to a QImage, where \var{array} must be a two-dimensional
+  NumPy, numarray, or Numeric array of type UnsignedInt8 or UnsignedInt32.
+\end{funcdesc}
+
+\begin{funcdesc}{toNumarray}{image}
+  Convert \var{image} of type \class{QImage} to a numarray array. This function
+  is only present if numarray has been detected when building PyQwt.
+\end{funcdesc}
+
+\begin{funcdesc}{toNumeric}{image}
+  Convert \var{image} of type \class{QImage} to a Numeric array. This function
+  is only present if Numeric has been detected when building PyQwt.
+\end{funcdesc}
+
+\begin{funcdesc}{toNumpy}{image}
+  Convert \var{image} of type \class{QImage} to a NumPy array. This function
+  is only present if NumPy has been detected when building PyQwt.
+\end{funcdesc}
+
+\begin{funcdesc}{to_na_array}{image}
+  Convert \var{image} of type \class{QImage} to a Numarray array. This function
+  has been deprecated and is only present if Numarray has been detected when
+  building PyQwt.  Use \function{toNumarray(aQImage)}.
+\end{funcdesc}
+
+\begin{funcdesc}{to_np_array}{image}
+  Convert \var{image} of type \class{QImage} to a Numeric array. This function
+  has been deprecated and is is only present if Numeric has been detected when
+  building PyQwt. Use \function{toNumeric(aQImage)}
+\end{funcdesc}
 
 
 \section{Class reference \label{classes}}
