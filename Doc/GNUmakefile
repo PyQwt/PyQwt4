@@ -9,7 +9,7 @@ SOURCES := \
 doc: $(SOURCES)
 	if [ ! -e html/pyqwt ]; then mkdir -p html/pyqwt; fi
 	(cd html/pyqwt; rm -f *.css *.dat *.html *.idx *.old *.pl *.gif)
-	cp -pu html/icons/*.png html/pyqwt
+	cp -p html/icons/*.png html/pyqwt
 	python $(MKHOWTO) -D --html --dir html/pyqwt \
 	    --image-type png --favicon pyfav.png \
 	    --up-link http://pyqwt.sourceforge.net --up-title "Pyqwt Home" \
