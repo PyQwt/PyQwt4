@@ -22,7 +22,7 @@ doc: $(SOURCES)
 htdoc: doc $(SOURCES)
 	if [ ! -e html/htdoc ]; then mkdir -p html/htdoc; fi
 	(cd html/htdoc; rm -f *.css *.dat *.html *.idx *.old *.pl *.gif)
-	cp -pur html/pyqwt/* html/htdoc
+	cp -pr html/pyqwt/* html/htdoc
 	python sourceforge.py html/htdoc/*.html
 	date -u "+%Y-%m-%d %T" > htdoc
 
