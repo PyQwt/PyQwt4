@@ -42,26 +42,17 @@ public:
     double value(double) const;
     int recalc(SIP_PYOBJECT, SIP_PYOBJECT, int = 0);
 %MethodCode
-PyObject *xOut, *yOut;
-double *x = 0;
-double *y = 0;
-int nx, ny;
-
-if (1 != try_Contiguous_1D_PyArray_of_double(a0, &xOut, &x, &nx)) {
+QwtArray<double> xArray;
+if (1 != try_PyObject_to_QwtArray(a0, xArray))
     return 0;
-}
-        
-if (1 != try_Contiguous_1D_PyArray_of_double(a1, &yOut, &y, &ny)) {
-    Py_DECREF(xOut);
+
+QwtArray<double> yArray;       
+if (1 != try_PyObject_to_QwtArray(a1, yArray))
     return 0;
-}
 
-int n = nx < ny ? nx : ny;
+    int n = xArray.size() < yArray.size() ? xArray.size() : yArray.size();
         
-sipRes = sipCpp->QwtSpline::recalc(x, y, n, a2);
-
-Py_DECREF(xOut);
-Py_DECREF(yOut);
+    sipRes = sipCpp->QwtSpline::recalc(xArray.data(), yArray.data(), n, a2);
 %End // recalc()
 
     int recalc(const QwtArrayDouble&, const QwtArrayDouble&, int = 0);
