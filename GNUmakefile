@@ -49,6 +49,7 @@ install-trace: all-trace
 
 # build a distribution tarball
 dist: distclean all
+	(cd Doc; rm doc; make)
 	python setup.py sdist --formats=gztar
 
 clean:
