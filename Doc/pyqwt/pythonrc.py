@@ -27,11 +27,11 @@ register(save_history)
 # Cleans up the global name
 del register, path, readline, rlcompleter, historyPath, save_history
 
-# Tries to import NumPy  and SciPy (assumes new SciPy based on NumPy).
+# Tries to import NumPy  and SciPy
 try:
-    import numpy as NP
-    import scipy as SP
-    SP.pkgload()
+    import numpy as np
+    import scipy as sp
+    sp.pkgload()
 except ImportError:
     pass
 

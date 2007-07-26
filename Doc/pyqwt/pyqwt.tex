@@ -7,27 +7,28 @@
   {http://qwt.sourceforge.net}}
 \newcommand{\Grace}{\ulink{Grace}
   {http://plasma-gate.weizmann.ac.il/Grace/}}
-\newcommand{\cvs}{4.2.2}
+\newcommand{\cvs}{4.2.3}
+\newcommand{\target}{4.2.3}
 
 % Source code
 \newcommand{\Download}{\ulink{download}
   {http://pyqwt.sourceforge.net/download.html}}
 \newcommand{\Snapshot}{\ulink{snapshot}
   {http://pyqwt.sourceforge.net/snapshot}}
-\newcommand{\Sip}{\ulink{sip-4.5.2.tar.gz}
-  {http://pyqwt.sourceforge.net/support/sip-4.5.2.tar.gz}}
+\newcommand{\Sip}{\ulink{sip-4.6.tar.gz}
+  {http://pyqwt.sourceforge.net/support/sip-4.6.tar.gz}}
 \newcommand{\SipSnapShot}{\ulink{SIP snapshot}
   {http://www.riverbankcomputing.com/Downloads/Snapshots/sip4/}}
-\newcommand{\PyQtGpl}{\ulink{PyQt-x11-gpl-3.17.tar.gz}
-  {http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.17-gpl.tar.gz}}
-\newcommand{\PyQtMac}{\ulink{PyQt-mac-gpl-3.17.tar.gz}
-  {http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.17.tar.gz}}
+\newcommand{\PyQtGpl}{\ulink{PyQt-x11-gpl-3.17.2.tar.gz}
+  {http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.17.2-gpl.tar.gz}}
+\newcommand{\PyQtMac}{\ulink{PyQt-mac-gpl-3.17.2.tar.gz}
+  {http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.17.2.tar.gz}}
 \newcommand{\PyQtSnapShot}{\ulink{PyQt3 snapshot}
   {http://www.riverbankcomputing.com/Downloads/Snapshots/PyQt3}}
 \newcommand{\NumPy}{\ulink{NumPy}
   {http://numpy.scipy.org}}
-\newcommand{\NumPyTarGz}{\ulink{NumPy-1.0.1.tar.gz}
-  {http://prdownloads.sourceforge.net/numpy/numpy-1.0.1.tar.gz?download}}
+\newcommand{\NumPyTarGz}{\ulink{NumPy-1.0.3.tar.gz}
+  {http://prdownloads.sourceforge.net/numpy/numpy-1.0.3.tar.gz?download}}
 \newcommand{\numarray}{\ulink{numarray}
   {http://www.stsci.edu/resources/software_hardware/numarray}}
 \newcommand{\numarrayTarGz}{\ulink{numarray-1.5.2.tar.gz}
@@ -40,8 +41,8 @@
   {http://prdownloads.sourceforge.net/pyqwt/PyQwt-\version.tar.gz?download}}
 
 % Installers for MS-Windows
-\newcommand{\PythonExe}{\ulink{Python-2.4.3.exe}
-  {http://www.python.org/ftp/python/2.4.3/Python-2.4.3.exe}}
+\newcommand{\PythonExe}{\ulink{Python-2.5.1.exe}
+  {http://www.python.org/ftp/python/2.5.1/Python-2.5.1.exe}}
 \newcommand{\NumericExe}{\ulink{Numeric-24.2.win32-py2.4.exe}
   {http://prdownloads.sourceforge.net/numpy/Numeric-24.2.win32-py2.4.exe?download}}
 \newcommand{\numarrayExe}{\ulink{numarray-1.5.2.win32-py2.4.exe}
@@ -55,12 +56,19 @@
   (easiest for most users).
 
   However, the \file{configure.py} script lets you build PyQwt against a
-  shared or static \Qwt-4.2.0 library (not the 4.2.0rcX release candidates
-  because of API enhancements).
+  shared or static \Qwt-4.2.0 library.
 
-  To exploit the full power of the QwtPlot widget, you should install at
-  least one the Numerical Python extensions:
-  \NumPy{}, \numarray{}, or \Numeric{}.
+  To exploit the full power of the PyQwt, you should install at least one of
+  the Numerical Python extensions: \NumPy{}, \numarray{}, or \Numeric{}
+  and built PyQwt with support for the numerical Python extension(s) of
+  your choice.
+
+  PyQwt-\target{} and recent versions of the numerical Python extensions support
+  the \ulink{N-D array interface}{http://numpy.scipy.org/array_interface.shtml}
+  protocol.  Therefore, PyQwt supports those extensions, even if they have not
+  been installed when PyQwt has been built. However, the functionality is
+  somewhat reduced in this case, since conversion from an QImage to a Numerical
+  Python array is not supported.
 
   I am using \NumPyTarGz{}, \numarrayTarGz{}, and \NumericTarGz{}.
   \NumPy{} is actively developed and recommended.
@@ -244,14 +252,9 @@ between PyQwt and Qwt.
 
 \Future{}
 
-\begin{notice}[warning]
-  The module \module{Qwt4.iqt} will not yet work with a MSVC-compiled Python,
-  because it has no \module{readline} module.
-\end{notice}
-
-The programming style \emph{imposed} by PyQt (and other GUI toolkit wrappers)
-is to create an application instance with some widgets and to enter into an
-event loop that locks you from the Python command line interpreter.
+The programming style \emph{imposed} by PyQt-3 and other GUI toolkit wrappers
+is to create an application instance with some widgets and to enter an event
+loop that locks you from the Python command line interpreter.
 
 Module \module{Qwt4.iqt} enables you to:
 \begin{itemize}
@@ -262,11 +265,17 @@ Module \module{Qwt4.iqt} enables you to:
   to interact with those widgets through (Py)Qt's GUI.
 \end{itemize}
 
-Module \module{Qwt4.iqt} works by hooking \cfunction{qApp->processEvents()} on
-the event hook of the readline module.
-The GNU readline library closes the event loop by calling 
-\cfunction{qApp->processEvent()} at a maximum rate of 10 times per second
-while reading your keyboard input.
+When Python has the GNU \module{readline} module, the \module{Qwt4.iqt} module
+works by hooking \cfunction{qApp->processEvents()} on the event hook of the
+\module{readline} module. The GNU readline library closes the event loop by
+calling  \cfunction{qApp->processEvent()} at a maximum rate of 10 times per
+second while reading your keyboard input.
+
+When Python does not have the GNU \module{readline} module, the
+\module{Qwt4.iqt} module uses the
+{\ulink{techniques}
+  {http://www.riverbankcomputing.com/pipermail/pyqt/2007-July/016512.html}}
+suggested on the PyQt mailing list and implemented in PyQt-4.3 (and later).
 
 To see how \module{iqt} works, play with \file{ICompass.py} by running
 \begin{verbatim}
@@ -519,7 +528,7 @@ print the plot.
 \Future{}
 
 \begin{notice}[note]
-  You can install PyQwt-4.2.2 compiled for Qt3 side by side with PyQwt5
+  You can install PyQwt-4.2.3 compiled for Qt3 side by side with PyQwt5
   compiled for Qt3 and Qt4.
 \end{notice}
 
@@ -527,16 +536,16 @@ Build prerequisites for \PyQwtTarGz{}:
 \begin{enumerate}
   \item
     \ulink{Python}{http://www.python.org}.\\
-    Supported versions: Python-2.5.x, -2.4.x, and -2.3.x.
+    Supported versions: Python-2.5.x, and -2.4.x.
   \item
     \ulink{Qt}{http://www.trolltech.com}.\\
     Supported versions: Qt-3.3.x, and Qt-3.2.x.
   \item
     \Sip{}.\\
-    Supported versions: SIP-4.5, and -4.4.x.\\
+    Supported versions: SIP-4.7, and -4.6.\\
   \item
     Either \PyQtGpl{}, or \PyQtMac{}.\\
-    Supported versions: PyQt-3.17.x, and -3.16.x.\\
+    Supported versions: PyQt-3.17.\\
 \end{enumerate}
 
 \PrerequisitesEnd{}
@@ -553,7 +562,7 @@ Build prerequisites for \PyQwtTarGz{}:
 \item
   Invoke the commands:
 \begin{verbatim}
-cd PyQwt-4.2.2
+cd PyQwt-4.2.3
 cd configure
 python configure.py -Q ../qwt-4.2.0
 make
@@ -561,7 +570,7 @@ make install
 \end{verbatim}
   to compile and link the Qwt sources statically with PyQwt, or:
 \begin{verbatim}
-cd PyQwt-4.2.2
+cd PyQwt-4.2.3
 cd configure
 python configure.py -Q -I path/to/qwt/include/files -L /path/to/qwt/library
 make
