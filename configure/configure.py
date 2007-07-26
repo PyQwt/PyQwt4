@@ -24,20 +24,27 @@ class Die(Exception):
         
 
 try:
+    required = 'Requires at least SIP-4.6 and its development tools.'
     import sipconfig
 except ImportError:
-    raise Die, 'At least SIP-4.4 and its development tools are required.'
+    raise Die, required
+if 0x040600 > sipconfig._pkg_config['sip_version']:
+    raise Die, required
+del required
 
 
 def get_pyqt_configuration(options):
     """Return the PyQt configuration for Qt3 or Qt4
     """
+    required = 'Requires at least PyQt-3.17 and its development tools.'
     options.qwt = 'qwt4qt3'
     options.iqt = 'iqt4qt3'
     try:
         import pyqtconfig as pyqtconfig
     except ImportError:
-        raise Die, 'At least PyQt-3.16 and its development tools are required.'
+        raise Die, required
+    if 0x031100 > pyqtconfig._pkg_config['pyqt_version']:
+        raise Die, required
 
     try:
         configuration = pyqtconfig.Configuration()
@@ -284,7 +291,7 @@ def check_numpy(configuration, options, package):
 
 
 def check_compiler(configuration, options):
-    """Check compiler specifics
+    """Check compiler specifics.
     """
     print 'Do not get upset by error messages in the next 3 compiler checks:'
     
@@ -341,7 +348,7 @@ def check_compiler(configuration, options):
 
 
 def check_os(configuration, options):
-    """Adapt to different operating systems
+    """Check operating system specifics.
     """
     print "Found '%s' operating system:" % os.name
     print sys.version
@@ -362,30 +369,21 @@ def check_sip(configuration, options):
     
     print "Found SIP-%s." % version_str
 
-    if 0x040400 <= version:
-        pass
-    else:
-        raise Die, 'PyQwt requires SIP-4.5.x, or -4.4.x.'
+    if 0x040600 > version:
+        raise Die, 'PyQwt requires at least SIP-4.6.'
 
     return options
 
-# check_sip
+# check_sip()
 
 
 def check_iqt(configuration, options):
-    """Check if building of the iqt package is possible
+    """Check iqt module specifics.
     """
-    try:
-        import readline
-        if os.name == 'nt':
-            print 'The iqt module will not be built on Windows.'
-        else:
-            options.subdirs.append(options.iqt)
-            options.modules.append('iqt')
-            options.iqt_sipfile = os.path.join(
-                os.pardir, 'sip', options.iqt, 'IQtModule.sip')
-    except ImportError:
-        pass
+    options.subdirs.append(options.iqt)
+    options.modules.append('iqt')
+    options.iqt_sipfile = os.path.join(
+        os.pardir, 'sip', options.iqt, 'IQtModule.sip')
 
     return options
 
@@ -393,7 +391,7 @@ def check_iqt(configuration, options):
 
 
 def check_qwt(configuration, options):
-    """Check if building of the qwt package is possible
+    """Check qwt module specifics.
     """
     # zap all qwt_version_info*
     for name in glob.glob('qwt_version_info*'):
