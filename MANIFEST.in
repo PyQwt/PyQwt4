@@ -1,14 +1,16 @@
 # MANIFEST template file to make a distribution tarball
 
 # Package stuff
-include ANNOUNCEMENT-4.2.2 CHANGES-4.2.2 COPYING*
-include MANIFEST.in GNUmakefile THANKS *.patch *.spec
+include ANNOUNCEMENT-4.2.3 CHANGES-4.2.3 COPYING*
+include MANIFEST.in GNUmakefile THANKS *.patch
 
 # Documentation
-graft Doc/html/pyqwt
+graft Doc
+recursive-exclude Doc *cvsignore* *~ doc htdoc htdoc/* WARNINGS
 
 # PyQwt python code
 graft qt3lib
+recursive-exclude qt3lib *cvsignore* *~
 
 # configure
 include configure/configure.py
@@ -23,8 +25,6 @@ recursive-exclude suppport *cvsignore* *~
 
 # qwt-4.2.0
 graft qwt-4.2.0
-# remove qwt.spec, because it interferes with: rpm -ta PyQwt-4.2.1.tar.gz
-recursive-exclude qwt-4.2.0 qwt.spec
 
 # sip files
 graft sip
