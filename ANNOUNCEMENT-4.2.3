@@ -1,0 +1,40 @@
+What is PyQwt ( http://pyqwt.sourceforge.net ) ?
+
+- it is a set of Python bindings for the Qwt C++ class library which
+  extends the Qt framework with widgets for scientific and engineering
+  applications.   It provides a widget to plot 2-dimensional data and
+  various widgets to display and control bounded or unbounded floating
+  point values.
+
+- it requires and extends PyQt, a set of Python bindings for Qt.
+
+- it supports the use of PyQt-3, Qt-3, Qwt-4.2, the Numerical Python
+  extensions (any combination of NumPy, numarray, and Numeric) and optionally
+  SciPy in a GUI Python application or in an interactive Python session.
+
+- it runs on POSIX, Mac OS X and Windows platforms (practically any
+  platform supported by Qt and Python).
+
+- PyQwt-4.2.3 can coexist with PyQwt-5.0.x (for Qt-3 and Qt-4)
+ 
+The home page of PyQwt is http://pyqwt.sourceforge.net.
+
+New features and bug fixes in PyQwt-4.2.3 are:
+- support for SIP-4.7, and PyQt-3.17.3.
+- support for the N-D array interface specification
+  ( http://numpy.scipy.org/array_interface.shtml ) allows to copy data out
+  of NumPy arrays without enabling support for NumPy during the compilation
+  of PyQwt.
+- the iqt module also supports an interactive Python session without the
+  help of the GNU readline module.
+- removal of a huge memory leak in the conversion from an array to a QImage.
+
+
+PyQwt-4.2.3 supports:
+1. Python-2.5.x, or -2.4.x.
+2. PyQt-3.17.x.
+3  SIP-4.7.x, or -4.6.x.
+4. Qt-3.3.x, or -3.2.x.
+
+
+Enjoy -- Gerard Vermeulen

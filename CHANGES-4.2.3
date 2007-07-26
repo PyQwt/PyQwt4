@@ -1,0 +1,15 @@
+Changes in PyQwt-4.2.3:
+- support for SIP-4.7, and PyQt-3.17.3.
+- support for the N-D array interface specification
+  ( http://numpy.scipy.org/array_interface.shtml ) allows to copy data out
+  of NumPy arrays without enabling support for NumPy during the compilation
+  of PyQwt.
+- the iqt module also supports an interactive Python session without the
+  help of the GNU readline module.
+- removal of a huge memory leak in the conversion from an array to a QImage.
+- fixed crashing of MultiDemo.py when a numerical Python extension has been
+  installed but PyQwt has not been built with support for that extension.
+- when anynumpy.py fails to import any numerical Python extension, it pops up
+  a message box showing where to get NumPy.
+- the latex sources for the documentation (a Debian requirement).
+
