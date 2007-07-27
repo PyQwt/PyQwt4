@@ -20,7 +20,7 @@
 \newcommand{\SipSnapShot}{\ulink{SIP snapshot}
   {http://www.riverbankcomputing.com/Downloads/Snapshots/sip4/}}
 \newcommand{\PyQtGpl}{\ulink{PyQt-x11-gpl-3.17.2.tar.gz}
-  {http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.17.2-gpl.tar.gz}}
+  {http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.17.2.tar.gz}}
 \newcommand{\PyQtMac}{\ulink{PyQt-mac-gpl-3.17.2.tar.gz}
   {http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.17.2.tar.gz}}
 \newcommand{\PyQtSnapShot}{\ulink{PyQt3 snapshot}
@@ -82,10 +82,9 @@
   \end{notice}
 }
 
-%\renewcommand{\Future}{}
+\renewcommand{\Future}{}
 
 \newcommand{\Blurb}{
-\Future{}
 PyQwt is a set of Python bindings for the \Qwt{} C++ class library which
 extends the Qt framework with widgets for scientific, engineering and financial
 applications.   It provides a widget to plot 2-dimensional data and various
@@ -215,7 +214,7 @@ If you do not have a mathematical background, you can think of those array
 types as columns in a spreadsheet.  The spreadsheet lets you do operations
 on whole columns at once.  Look at the following simple example:
 
-\verbatiminput{numeric.example}
+\verbatiminput{numpy.example}
 
 The function call \samp{arange(0.0, 10.0, 3.0)} returns a NumPy array of 4
 equidistant points from 0 to 9 inclusive: \samp{array([ 0., 3., 6., 9.])}.
@@ -528,8 +527,8 @@ print the plot.
 \Future{}
 
 \begin{notice}[note]
-  You can install PyQwt-4.2.3 compiled for Qt3 side by side with PyQwt5
-  compiled for Qt3 and Qt4.
+  You can install PyQwt-4.2.3 (compiled for Qt-3) side by side with PyQwt-5.0.x
+  compiled for Qt-3 and Qt-4.
 \end{notice}
 
 Build prerequisites for \PyQwtTarGz{}:
@@ -545,7 +544,7 @@ Build prerequisites for \PyQwtTarGz{}:
     Supported versions: SIP-4.7, and -4.6.\\
   \item
     Either \PyQtGpl{}, or \PyQtMac{}.\\
-    Supported versions: PyQt-3.17.\\
+    Supported versions: PyQt-3.17.x.\\
 \end{enumerate}
 
 \PrerequisitesEnd{}
@@ -632,34 +631,37 @@ Undocumented classes have not yet been implemented or are still experimental.
 
 \begin{funcdesc}{toImage}{array}
   Convert \var{array} to a QImage, where \var{array} must be a two-dimensional
-  NumPy, numarray, or Numeric array of type UnsignedInt8 or UnsignedInt32.
+  NumPy, numarray, or Numeric array of type uint8 or uint32. This function is
+  always available, even when PyQwt has been built without support for NumPy,
+  numarray and Numeric. 
 \end{funcdesc}
 
 \begin{funcdesc}{toNumarray}{image}
   Convert \var{image} of type \class{QImage} to a numarray array. This function
-  is only present if numarray has been detected when building PyQwt.
+  is only available if PyQwt has been built with support for numarray.
 \end{funcdesc}
 
 \begin{funcdesc}{toNumeric}{image}
   Convert \var{image} of type \class{QImage} to a Numeric array. This function
-  is only present if Numeric has been detected when building PyQwt.
+  is only available if PyQwt has been built with support for Numeric.
 \end{funcdesc}
 
 \begin{funcdesc}{toNumpy}{image}
   Convert \var{image} of type \class{QImage} to a NumPy array. This function
-  is only present if NumPy has been detected when building PyQwt.
+  is only available if PyQwt has been built with support for NumPy.
 \end{funcdesc}
 
 \begin{funcdesc}{to_na_array}{image}
   Convert \var{image} of type \class{QImage} to a Numarray array. This function
-  has been deprecated and is only present if Numarray has been detected when
-  building PyQwt.  Use \function{toNumarray(aQImage)}.
+  has been deprecated and is only available if PyQwt has been built with
+  support for Numarray.
+  building PyQwt.  Use \function{toNumarray(image)}.
 \end{funcdesc}
 
 \begin{funcdesc}{to_np_array}{image}
   Convert \var{image} of type \class{QImage} to a Numeric array. This function
-  has been deprecated and is is only present if Numeric has been detected when
-  building PyQwt. Use \function{toNumeric(aQImage)}
+  has been deprecated and is is only available if PyQwt has been built with
+  support for Numeric. Use \function{toNumeric(image)}
 \end{funcdesc}
 
 
