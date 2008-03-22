@@ -1,7 +1,7 @@
 // The SIP interface specification for:
 //      QwtPlot.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -138,7 +138,7 @@ sipRes = sipCpp->QwtPlot::setCurveData(a0, xArray, yArray);
     int curveXAxis(long) const;
     bool setCurveYAxis(long, int);
     int curveYAxis(long) const;
-    void drawCurve(long, int = 0, int = -1);
+    void drawCurve(long, int = 0, int = -0x000000001);
     void enableGridX(bool = TRUE);
     void enableGridXMin(bool = TRUE);
     void enableGridY(bool = TRUE);
@@ -223,7 +223,7 @@ sipRes = sipCpp->QwtPlot::setCurveData(a0, xArray, yArray);
     QwtSymbol markerSymbol(long) const;
     void setAutoLegend(bool);
     bool autoLegend() const;
-    void enableLegend(bool, long = -1);
+    void enableLegend(bool, long = -0x000000001);
     bool legendEnabled(long) const;
     void setLegendPosition(QwtPlot::Position, double);
     void setLegendPosition(QwtPlot::Position);
@@ -236,7 +236,7 @@ sipRes = sipCpp->QwtPlot::setCurveData(a0, xArray, yArray);
     int legendFrameStyle() const;
     QwtLegend* legend();
     // signature: const QwtLegend* legend() const;
-    void setLegendDisplayPolicy(QwtLegend::LegendDisplayPolicy, int = -1);
+    void setLegendDisplayPolicy(QwtLegend::LegendDisplayPolicy, int = -0x000000001);
     virtual QSize sizeHint() const;
     virtual QSize minimumSizeHint() const;
     virtual bool event(QEvent*);

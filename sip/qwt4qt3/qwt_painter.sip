@@ -1,7 +1,7 @@
 // The SIP interface specification for:
 //      QwtPainter.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -50,10 +50,10 @@ public:
     static void setDeviceClipping(bool);
     static bool deviceClipping();
     static void setClipRect(QPainter*, const QRect&);
-    static void drawText(QPainter*, int, int, const QString&, int = -1);
-    static void drawText(QPainter*, const QPoint&, const QString&, int = -1);
-    static void drawText(QPainter*, int, int, int, int, int, const QString&, int = -1);
-    static void drawText(QPainter*, const QRect&, int, const QString&, int = -1);
+    static void drawText(QPainter*, int, int, const QString&, int = -0x000000001);
+    static void drawText(QPainter*, const QPoint&, const QString&, int = -0x000000001);
+    static void drawText(QPainter*, int, int, int, int, int, const QString&, int = -0x000000001);
+    static void drawText(QPainter*, const QRect&, int, const QString&, int = -0x000000001);
     static void drawSimpleRichText(QPainter*, const QRect&, int, QSimpleRichText&);
     static void drawRect(QPainter*, int, int, int, int);
     static void drawRect(QPainter*, const QRect&);

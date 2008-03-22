@@ -1,7 +1,7 @@
 // The SIP interface specification for:
 //      QwtPlotPrintFilter.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -64,8 +64,8 @@ public:
 
     QwtPlotPrintFilter();
     virtual ~QwtPlotPrintFilter();
-    virtual QColor color(const QColor&, QwtPlotPrintFilter::Item, int = -1) const;
-    virtual QFont font(const QFont&, QwtPlotPrintFilter::Item, int = -1) const;
+    virtual QColor color(const QColor&, QwtPlotPrintFilter::Item, int = -0x000000001) const;
+    virtual QFont font(const QFont&, QwtPlotPrintFilter::Item, int = -0x000000001) const;
     void setOptions(int);
     int options() const;
     virtual void apply(QwtPlot*) const;

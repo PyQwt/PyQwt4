@@ -1,7 +1,7 @@
 // The SIP interface specification for:
 //      QwtSymbol.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -58,7 +58,7 @@ public:
     bool operator!=(const QwtSymbol&) const;
     bool operator==(const QwtSymbol&) const;
     void setSize(const QSize&);
-    void setSize(int, int = -1);
+    void setSize(int, int = -0x000000001);
     void setBrush(const QBrush&);
     void setPen(const QPen&);
     void setStyle(QwtSymbol::Style);

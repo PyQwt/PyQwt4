@@ -4,7 +4,7 @@
 //      QwtLegendItem,
 //      QwtLegendLabel.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -46,11 +46,10 @@ public:
         Auto
     }; // enum LegendDisplayPolicy
 
-    virtual ~QwtLegend();
     QwtLegend(QWidget* /TransferThis/ = 0, const char* = 0);
     void setReadOnly(bool);
     bool isReadOnly() const;
-    void setDisplayPolicy(QwtLegend::LegendDisplayPolicy, int = -1);
+    void setDisplayPolicy(QwtLegend::LegendDisplayPolicy, int = -0x000000001);
     QwtLegend::LegendDisplayPolicy displayPolicy() const;
     int identifierMode() const;
     QWidget* contentsWidget();
@@ -70,6 +69,8 @@ public:
 protected:
     virtual void viewportResizeEvent(QResizeEvent*);
     virtual void layoutContents();
+public:
+    virtual ~QwtLegend();
 }; // class QwtLegend
 
 
@@ -80,7 +81,6 @@ class QwtLegendButton: QwtPushButton, QwtLegendItem
 %End // %TypeHeaderCode
 
 public:
-    virtual ~QwtLegendButton();
     QwtLegendButton(QWidget* /TransferThis/ = 0, const char* = 0);
     QwtLegendButton(const QwtSymbol&, const QPen&, const QString&, QWidget* /TransferThis/ = 0, const char* = 0);
     virtual void setTitle(const QString&);
@@ -89,6 +89,8 @@ protected:
     virtual QwtText* titleText() const;
     virtual void updateItem();
     virtual void updateIconset();
+public:
+    virtual ~QwtLegendButton();
 }; // class QwtLegendButton
 
 
@@ -132,7 +134,6 @@ class QwtLegendLabel: QLabel, QwtLegendItem
 %End // %TypeHeaderCode
 
 public:
-    virtual ~QwtLegendLabel();
     QwtLegendLabel(QWidget* = 0, const char* = 0);
     QwtLegendLabel(const QwtSymbol&, const QPen&, const QString&, QWidget* = 0, const char* = 0);
     virtual void setTitle(const QString&);
@@ -141,6 +142,8 @@ protected:
     virtual QwtText* titleText() const;
     virtual void drawContents(QPainter*);
     virtual void updateItem();
+public:
+    virtual ~QwtLegendLabel();
 }; // class QwtLegendLabel
 
 

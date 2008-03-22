@@ -2,7 +2,7 @@
 //      QwtPlotItem,
 //      QwtPlotMappedItem.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -73,13 +73,13 @@ class QwtPlotMappedItem: QwtPlotItem
 %End // %TypeHeaderCode
 
 public:
-    virtual ~QwtPlotMappedItem();
     QwtPlotMappedItem(QwtPlot* /TransferThis/, bool = TRUE);
     void setAxis(int, int);
     void setXAxis(int);
     int xAxis() const;
     void setYAxis(int);
     int yAxis() const;
+    virtual ~QwtPlotMappedItem();
 }; // class QwtPlotMappedItem
 
 

@@ -1,7 +1,7 @@
 // The SIP interface specification for:
 //      QwtSlider.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -51,7 +51,6 @@ public:
         BgBoth
     }; // enum BGSTYLE
 
-    virtual ~QwtSlider();
     QwtSlider(QWidget* /TransferThis/, const char* = 0, Qt::Orientation = Qt::Horizontal, QwtSlider::ScalePos = None, QwtSlider::BGSTYLE = BgTrough);
     virtual void setOrientation(Qt::Orientation);
     void setBgStyle(QwtSlider::BGSTYLE);
@@ -84,6 +83,8 @@ protected:
     virtual void fontChange(const QFont&);
     void layoutSlider(bool = TRUE);
     int xyPosition(double) const;
+public:
+    virtual ~QwtSlider();
 
 %If (HAS_QWT4)
 %ConvertToSubClassCode

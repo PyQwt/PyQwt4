@@ -2,7 +2,7 @@
 //      QwtCompassRose,
 //      QwtSimpleCompassRose.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -41,7 +41,7 @@ public:
     virtual ~QwtCompassRose();
     virtual void setPalette(const QPalette&);
     const QPalette& palette() const;
-    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = QPalette::Active) const = 0;
+    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = Active) const = 0;
 }; // class QwtCompassRose
 
 
@@ -52,8 +52,7 @@ class QwtSimpleCompassRose: QwtCompassRose
 %End // %TypeHeaderCode
 
 public:
-    virtual ~QwtSimpleCompassRose();
-    QwtSimpleCompassRose(int = 8, int = -1);
+    QwtSimpleCompassRose(int = 8, int = -0x000000001);
     void setWidth(double);
     double width() const;
     void setNumThorns(int);
@@ -62,8 +61,9 @@ public:
     int numThornLevels() const;
     void setShrinkFactor(double);
     double shrinkFactor() const;
-    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = QPalette::Active) const;
+    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = Active) const;
     static void drawRose(QPainter*, const QColorGroup&, const QPoint&, int, double, double, int, int, double);
+    virtual ~QwtSimpleCompassRose();
 }; // class QwtSimpleCompassRose
 
 

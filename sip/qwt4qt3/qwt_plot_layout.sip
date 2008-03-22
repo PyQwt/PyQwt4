@@ -1,7 +1,7 @@
 // The SIP interface specification for:
 //      QwtPlotLayout.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -49,7 +49,7 @@ public:
     virtual ~QwtPlotLayout();
     void setMargin(int);
     int margin() const;
-    void setCanvasMargin(int, int = -1);
+    void setCanvasMargin(int, int = -0x000000001);
     int canvasMargin(int) const;
     void setAlignCanvasToScales(bool);
     bool alignCanvasToScales() const;

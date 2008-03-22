@@ -1,7 +1,7 @@
 // The SIP interface specification for:
 //      QwtPushButton.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -37,7 +37,6 @@ class QwtPushButton: QPushButton
 %End // %TypeHeaderCode
 
 public:
-    virtual ~QwtPushButton();
     QwtPushButton(QWidget* /TransferThis/ = 0, const char* = 0);
     QwtPushButton(const QString&, QWidget* /TransferThis/ = 0, const char* = 0);
     QwtPushButton(const QIconSet&, const QString&, QWidget* /TransferThis/ = 0, const char* = 0);
@@ -52,6 +51,8 @@ public:
     virtual int heightForWidth(int) const;
 protected:
     virtual void drawButtonLabel(QPainter*);
+public:
+    virtual ~QwtPushButton();
 }; // class QwtPushButton
 
 

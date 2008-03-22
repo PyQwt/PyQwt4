@@ -3,7 +3,7 @@
 //      QwtPlotGrid,
 //      QwtPlotMarker.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -39,10 +39,10 @@ class QwtPlotCurve: QwtCurve, QwtPlotMappedItem
 %End // %TypeHeaderCode
 
 public:
-    virtual ~QwtPlotCurve();
     QwtPlotCurve(QwtPlot* /TransferThis/, const QString& = QString::null);
     // Not Pythonic: const QwtPlotCurve& operator=(const QwtPlotCurve&);
     virtual void curveChanged();
+    virtual ~QwtPlotCurve();
 }; // class QwtPlotCurve
 
 
@@ -53,9 +53,9 @@ class QwtPlotGrid: QwtGrid, QwtPlotMappedItem
 %End // %TypeHeaderCode
 
 public:
-    virtual ~QwtPlotGrid();
     QwtPlotGrid(QwtPlot* /TransferThis/);
     virtual void gridChanged();
+    virtual ~QwtPlotGrid();
 }; // class QwtPlotGrid
 
 
@@ -66,13 +66,13 @@ class QwtPlotMarker: QwtMarker, QwtPlotMappedItem
 %End // %TypeHeaderCode
 
 public:
-    virtual ~QwtPlotMarker();
     QwtPlotMarker(QwtPlot* /TransferThis/);
     double xValue() const;
     double yValue() const;
     void setXValue(double);
     void setYValue(double);
     virtual void markerChanged();
+    virtual ~QwtPlotMarker();
 }; // class QwtPlotMarker
 
 

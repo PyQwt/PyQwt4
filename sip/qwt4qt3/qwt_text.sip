@@ -3,7 +3,7 @@
 //      QwtRichText,
 //      QwtText.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -39,13 +39,13 @@ class QwtPlainText: QwtText
 %End // %TypeHeaderCode
 
 public:
-    virtual ~QwtPlainText();
     QwtPlainText(const QString&, const QFont&, int = 2628, const QColor& = QColor(), const QPen& = QPen(Qt::NoPen), const QBrush& = QBrush(Qt::NoBrush));
     QwtPlainText(const QString&, const QFont&, const QColor&);
     virtual QwtText* clone() const /Factory/;
     virtual int heightForWidth(int) const;
     virtual QRect boundingRect(QPainter* = 0) const;
     virtual void draw(QPainter*, const QRect&) const;
+    virtual ~QwtPlainText();
 }; // class QwtPlainText
 
 

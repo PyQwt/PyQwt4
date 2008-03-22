@@ -1,7 +1,7 @@
 // The SIP interface specification for:
 //      QwtCurve.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -101,7 +101,7 @@ sipCpp->QwtCurve::setData(xArray, yArray);
     const QwtSymbol& symbol() const;
     void setSplineSize(int);
     int splineSize() const;
-    virtual void draw(QPainter*, const QwtDiMap&, const QwtDiMap&, int = 0, int = -1);
+    virtual void draw(QPainter*, const QwtDiMap&, const QwtDiMap&, int = 0, int = -0x000000001);
 protected:
     void init(const QString&);
     void copy(const QwtCurve&);

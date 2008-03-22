@@ -2,7 +2,7 @@
 //      QwtCurveDict,
 //      QwtMarkerDict.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -38,8 +38,8 @@ class QwtCurveDict: QwtSeqDict<QwtPlotCurve>
 %End // %TypeHeaderCode
 
 public:
-    virtual ~QwtCurveDict();
     QwtCurveDict();
+    virtual ~QwtCurveDict();
 }; // class QwtCurveDict
 
 
@@ -50,8 +50,8 @@ class QwtMarkerDict: QwtSeqDict<QwtPlotMarker>
 %End // %TypeHeaderCode
 
 public:
-    virtual ~QwtMarkerDict();
     QwtMarkerDict();
+    virtual ~QwtMarkerDict();
 }; // class QwtMarkerDict
 
 

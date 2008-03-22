@@ -1,7 +1,7 @@
 // The SIP interface specification for:
 //      QwtArrowButton.
 //
-// Copyright (C) 2001-2007 Gerard Vermeulen
+// Copyright (C) 2001-2008 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -37,7 +37,6 @@ class QwtArrowButton: QPushButton
 %End // %TypeHeaderCode
 
 public:
-    virtual ~QwtArrowButton();
     QwtArrowButton(int, Qt::ArrowType, QWidget* /TransferThis/, const char* = 0);
     Qt::ArrowType arrowType() const;
     int num() const;
@@ -50,6 +49,8 @@ protected:
     virtual QRect labelRect() const;
     virtual QSize arrowSize(Qt::ArrowType, const QSize&) const;
     virtual void keyPressEvent(QKeyEvent*);
+public:
+    virtual ~QwtArrowButton();
 }; // class QwtArrowButton
 
 
