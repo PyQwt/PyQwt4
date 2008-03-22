@@ -101,7 +101,7 @@ sipCpp->QwtCurve::setData(xArray, yArray);
     const QwtSymbol& symbol() const;
     void setSplineSize(int);
     int splineSize() const;
-    virtual void draw(QPainter*, const QwtDiMap&, const QwtDiMap&, int = 0, int = -0x000000001);
+    virtual void draw(QPainter*, const QwtDiMap&, const QwtDiMap&, int = 0, int = -1);
 protected:
     void init(const QString&);
     void copy(const QwtCurve&);

@@ -49,7 +49,7 @@ public:
     QwtLegend(QWidget* /TransferThis/ = 0, const char* = 0);
     void setReadOnly(bool);
     bool isReadOnly() const;
-    void setDisplayPolicy(QwtLegend::LegendDisplayPolicy, int = -0x000000001);
+    void setDisplayPolicy(QwtLegend::LegendDisplayPolicy, int = -1);
     QwtLegend::LegendDisplayPolicy displayPolicy() const;
     int identifierMode() const;
     QWidget* contentsWidget();

@@ -58,7 +58,7 @@ public:
     bool operator!=(const QwtSymbol&) const;
     bool operator==(const QwtSymbol&) const;
     void setSize(const QSize&);
-    void setSize(int, int = -0x000000001);
+    void setSize(int, int = -1);
     void setBrush(const QBrush&);
     void setPen(const QPen&);
     void setStyle(QwtSymbol::Style);

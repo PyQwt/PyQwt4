@@ -41,7 +41,7 @@ public:
     virtual ~QwtCompassRose();
     virtual void setPalette(const QPalette&);
     const QPalette& palette() const;
-    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = Active) const = 0;
+    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = QPalette::Active) const = 0;
 }; // class QwtCompassRose
 
 
@@ -52,7 +52,7 @@ class QwtSimpleCompassRose: QwtCompassRose
 %End // %TypeHeaderCode
 
 public:
-    QwtSimpleCompassRose(int = 8, int = -0x000000001);
+    QwtSimpleCompassRose(int = 8, int = -1);
     void setWidth(double);
     double width() const;
     void setNumThorns(int);
@@ -61,7 +61,7 @@ public:
     int numThornLevels() const;
     void setShrinkFactor(double);
     double shrinkFactor() const;
-    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = Active) const;
+    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = QPalette::Active) const;
     static void drawRose(QPainter*, const QColorGroup&, const QPoint&, int, double, double, int, int, double);
     virtual ~QwtSimpleCompassRose();
 }; // class QwtSimpleCompassRose

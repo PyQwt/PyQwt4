@@ -37,9 +37,9 @@ class QwtDynGridLayout: QLayout
 %End // %TypeHeaderCode
 
 public:
-    QwtDynGridLayout(QWidget*, int = 0, int = -0x000000001, const char* = 0);
-    QwtDynGridLayout(QLayout*, int = -0x000000001, const char* = 0);
-    QwtDynGridLayout(int = -0x000000001, const char* = 0);
+    QwtDynGridLayout(QWidget* /TransferThis/, int = 0, int = -1, const char* = 0);
+    QwtDynGridLayout(QLayout* /TransferThis/, int = -1, const char* = 0);
+    QwtDynGridLayout(int = -1, const char* = 0);
     virtual ~QwtDynGridLayout();
     virtual void invalidate();
     void setMaxCols(uint);

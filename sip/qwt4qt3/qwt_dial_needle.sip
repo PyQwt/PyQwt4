@@ -46,7 +46,7 @@ public:
     }; // enum Style
 
     QwtCompassMagnetNeedle(QwtCompassMagnetNeedle::Style = TriangleStyle, const QColor& = Qt::white, const QColor& = Qt::red);
-    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = Active) const;
+    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = QPalette::Active) const;
     static void drawTriangleNeedle(QPainter*, const QColorGroup&, const QPoint&, int, double);
     static void drawThinNeedle(QPainter*, const QColorGroup&, const QPoint&, int, double);
 protected:
@@ -69,7 +69,7 @@ public:
     }; // enum Style
 
     QwtCompassWindArrow(QwtCompassWindArrow::Style, const QColor& = Qt::white, const QColor& = Qt::gray);
-    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = Active) const;
+    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = QPalette::Active) const;
     static void drawStyle1Needle(QPainter*, const QColorGroup&, const QPoint&, int, double);
     static void drawStyle2Needle(QPainter*, const QColorGroup&, const QPoint&, int, double);
     virtual ~QwtCompassWindArrow();
@@ -85,7 +85,7 @@ class QwtDialNeedle
 public:
     QwtDialNeedle();
     virtual ~QwtDialNeedle();
-    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = Active) const = 0;
+    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = QPalette::Active) const = 0;
     virtual void setPalette(const QPalette&);
     const QPalette& palette() const;
 protected:
@@ -107,7 +107,7 @@ public:
     }; // enum Style
 
     QwtDialSimpleNeedle(QwtDialSimpleNeedle::Style, bool = TRUE, const QColor& = Qt::gray, const QColor& = Qt::darkGray);
-    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = Active) const;
+    virtual void draw(QPainter*, const QPoint&, int, double, QPalette::ColorGroup = QPalette::Active) const;
     static void drawArrowNeedle(QPainter*, const QColorGroup&, const QPoint&, int, int, double, bool);
     static void drawRayNeedle(QPainter*, const QColorGroup&, const QPoint&, int, int, double, bool);
     void setWidth(int);

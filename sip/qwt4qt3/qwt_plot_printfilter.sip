@@ -64,8 +64,8 @@ public:
 
     QwtPlotPrintFilter();
     virtual ~QwtPlotPrintFilter();
-    virtual QColor color(const QColor&, QwtPlotPrintFilter::Item, int = -0x000000001) const;
-    virtual QFont font(const QFont&, QwtPlotPrintFilter::Item, int = -0x000000001) const;
+    virtual QColor color(const QColor&, QwtPlotPrintFilter::Item, int = -1) const;
+    virtual QFont font(const QFont&, QwtPlotPrintFilter::Item, int = -1) const;
     void setOptions(int);
     int options() const;
     virtual void apply(QwtPlot*) const;
