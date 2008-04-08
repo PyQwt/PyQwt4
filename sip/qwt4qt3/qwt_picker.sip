@@ -128,7 +128,7 @@ protected:
     virtual void drawCursorLabel(QPainter*, const QRect&, const QPoint&, const QPointArray&) const;
     virtual void stretchSelection(const QSize&, const QSize&);
     virtual QString cursorLabel(const QPoint&) const;
-    virtual QwtPickerMachine* stateMachine(int) const;
+    virtual QwtPickerMachine* stateMachine(int) const /Factory/;
     void repaint(const QRect& = QRect());
 }; // class QwtPicker
 
