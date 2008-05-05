@@ -78,6 +78,49 @@ protected:
     virtual void wheelEvent(QWheelEvent*);
     virtual double getValue(const QPoint&) = 0;
     virtual void getScrollMode(const QPoint&, int& /Out/, int& /Out/) = 0;
+
+// python mksccode Qwt4
+%ConvertToSubClassCode
+    static struct class_graph {
+        char *name;
+        sipWrapperType **type;
+        int yes, no;
+    } graph[] = {
+        {sipName_QwtLegend, &sipClass_QwtLegend, -1, 1},
+        {sipName_QwtArrowButton, &sipClass_QwtArrowButton, -1, 2},
+        {sipName_QwtScale, &sipClass_QwtScale, -1, 3},
+        {sipName_QwtPlot, &sipClass_QwtPlot, -1, 4},
+        {sipName_QwtCounter, &sipClass_QwtCounter, -1, 5},
+        {sipName_QwtDynGridLayout, &sipClass_QwtDynGridLayout, -1, 6},
+        {sipName_QwtPlotCanvas, &sipClass_QwtPlotCanvas, -1, 7},
+        {sipName_QwtThermo, &sipClass_QwtThermo, -1, 8},
+        {sipName_QwtLegendLabel, &sipClass_QwtLegendLabel, -1, 9},
+        {sipName_QwtSliderBase, &sipClass_QwtSliderBase, 12, 10},
+        {sipName_QwtPicker, &sipClass_QwtPicker, 18, 11},
+        {sipName_QwtPushButton, &sipClass_QwtPushButton, 20, -1},
+        {sipName_QwtWheel, &sipClass_QwtWheel, -1, 13},
+        {sipName_QwtKnob, &sipClass_QwtKnob, -1, 14},
+        {sipName_QwtSlider, &sipClass_QwtSlider, -1, 15},
+        {sipName_QwtDial, &sipClass_QwtDial, 16, -1},
+        {sipName_QwtAnalogClock, &sipClass_QwtAnalogClock, -1, 17},
+        {sipName_QwtCompass, &sipClass_QwtCompass, -1, -1},
+        {sipName_QwtPlotPicker, &sipClass_QwtPlotPicker, 19, -1},
+        {sipName_QwtPlotZoomer, &sipClass_QwtPlotZoomer, -1, -1},
+        {sipName_QwtLegendButton, &sipClass_QwtLegendButton, -1, -1},
+    };
+    int i = 0;
+    sipClass = NULL;
+    do {
+        struct class_graph *cg = &graph[i];
+        if (cg->name != NULL && sipCpp->inherits(cg->name)) {
+            sipClass = *cg->type;
+            i = cg->yes;
+        } else {
+            i = cg->no;
+        }
+    } while (i >= 0);
+%End
+
 }; // class QwtSliderBase
 
 
