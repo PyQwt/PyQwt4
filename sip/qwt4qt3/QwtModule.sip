@@ -37,6 +37,7 @@
 %Feature HAS_NUMARRAY
 %Feature HAS_NUMERIC
 %Feature HAS_NUMPY
+%Feature HAS_PYQT_031105
 %Feature HAS_QWT5
 %Feature HAS_QWT4
 
@@ -73,7 +74,9 @@ typedef int Py_ssize_t;
 
 // Converter code
 %Include common/QwtMap.sip
+%If (!HAS_PYQT_031105)
 %Include common/QwtMemArray.sip
+%End // (!HAS_PYQT_031105) 
 %Include common/QwtValueStack.sip
 %Include common/QwtValueList.sip
 
