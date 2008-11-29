@@ -49,8 +49,6 @@ protected:
     virtual QRect labelRect() const;
     virtual QSize arrowSize(Qt::ArrowType, const QSize&) const;
     virtual void keyPressEvent(QKeyEvent*);
-public:
-    virtual ~QwtArrowButton();
 }; // class QwtArrowButton
 
 

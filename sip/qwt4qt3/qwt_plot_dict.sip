@@ -39,7 +39,6 @@ class QwtCurveDict: QwtSeqDict<QwtPlotCurve>
 
 public:
     QwtCurveDict();
-    virtual ~QwtCurveDict();
 }; // class QwtCurveDict
 
 
@@ -51,7 +50,6 @@ class QwtMarkerDict: QwtSeqDict<QwtPlotMarker>
 
 public:
     QwtMarkerDict();
-    virtual ~QwtMarkerDict();
 }; // class QwtMarkerDict
 
 

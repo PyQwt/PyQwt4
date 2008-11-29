@@ -66,8 +66,6 @@ protected:
     virtual void begin();
     virtual bool end(bool = TRUE);
     virtual bool accept(QPointArray&) const;
-public:
-    virtual ~QwtPlotZoomer();
 }; // class QwtPlotZoomer
 
 

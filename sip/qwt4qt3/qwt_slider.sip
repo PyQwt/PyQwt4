@@ -83,8 +83,6 @@ protected:
     virtual void fontChange(const QFont&);
     void layoutSlider(bool = TRUE);
     int xyPosition(double) const;
-public:
-    virtual ~QwtSlider();
 }; // class QwtSlider
 
 

@@ -118,7 +118,6 @@ public:
     bool visibleLabels() const;
     void setPenWidth(uint);
     uint penWidth() const;
-    virtual ~QwtDialScaleDraw();
 }; // class QwtDialScaleDraw
 
 

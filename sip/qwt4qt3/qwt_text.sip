@@ -45,7 +45,6 @@ public:
     virtual int heightForWidth(int) const;
     virtual QRect boundingRect(QPainter* = 0) const;
     virtual void draw(QPainter*, const QRect&) const;
-    virtual ~QwtPlainText();
 }; // class QwtPlainText
 
 

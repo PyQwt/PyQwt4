@@ -42,7 +42,6 @@ public:
     QwtPlotCurve(QwtPlot* /TransferThis/, const QString& = QString::null);
     // Not Pythonic: const QwtPlotCurve& operator=(const QwtPlotCurve&);
     virtual void curveChanged();
-    virtual ~QwtPlotCurve();
 }; // class QwtPlotCurve
 
 
@@ -55,7 +54,6 @@ class QwtPlotGrid: QwtGrid, QwtPlotMappedItem
 public:
     QwtPlotGrid(QwtPlot* /TransferThis/);
     virtual void gridChanged();
-    virtual ~QwtPlotGrid();
 }; // class QwtPlotGrid
 
 
@@ -72,7 +70,6 @@ public:
     void setXValue(double);
     void setYValue(double);
     virtual void markerChanged();
-    virtual ~QwtPlotMarker();
 }; // class QwtPlotMarker
 
 

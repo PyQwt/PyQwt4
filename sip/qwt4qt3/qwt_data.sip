@@ -59,7 +59,6 @@ sipCpp = new sipQwtArrayData(xArray, yArray);
     virtual double x(size_t) const;
     virtual double y(size_t) const;
     virtual QwtDoubleRect boundingRect() const;
-    virtual ~QwtArrayData();
 }; // class QwtArrayData
 
 
@@ -126,7 +125,6 @@ public:
     virtual size_t size() const;
     virtual double x(size_t) const;
     virtual double y(size_t) const;
-    virtual ~QwtDoublePointData();
 }; // class QwtDoublePointData
 
 

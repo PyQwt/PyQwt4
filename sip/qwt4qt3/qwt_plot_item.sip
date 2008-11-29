@@ -87,7 +87,6 @@ public:
     int xAxis() const;
     void setYAxis(int);
     int yAxis() const;
-    virtual ~QwtPlotMappedItem();
 }; // class QwtPlotMappedItem
 
 

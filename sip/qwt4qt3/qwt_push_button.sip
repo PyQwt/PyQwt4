@@ -51,8 +51,6 @@ public:
     virtual int heightForWidth(int) const;
 protected:
     virtual void drawButtonLabel(QPainter*);
-public:
-    virtual ~QwtPushButton();
 }; // class QwtPushButton
 
 

@@ -77,8 +77,6 @@ private slots:
     void btnClicked();
 private:
     virtual void valueChange();
-public:
-    virtual ~QwtCounter();
 }; // class QwtCounter
 
 

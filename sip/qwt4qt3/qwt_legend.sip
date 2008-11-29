@@ -69,8 +69,6 @@ public:
 protected:
     virtual void viewportResizeEvent(QResizeEvent*);
     virtual void layoutContents();
-public:
-    virtual ~QwtLegend();
 }; // class QwtLegend
 
 
@@ -89,8 +87,6 @@ protected:
     virtual QwtText* titleText() const;
     virtual void updateItem();
     virtual void updateIconset();
-public:
-    virtual ~QwtLegendButton();
 }; // class QwtLegendButton
 
 
@@ -142,8 +138,6 @@ protected:
     virtual QwtText* titleText() const;
     virtual void drawContents(QPainter*);
     virtual void updateItem();
-public:
-    virtual ~QwtLegendLabel();
 }; // class QwtLegendLabel
 
 
