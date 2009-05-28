@@ -82,7 +82,7 @@ protected:
 // python mksccode Qwt4
 %ConvertToSubClassCode
     static struct class_graph {
-        char *name;
+        const char *name;
         sipWrapperType **type;
         int yes, no;
     } graph[] = {
