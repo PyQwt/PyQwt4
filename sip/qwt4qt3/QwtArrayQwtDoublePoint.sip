@@ -1,7 +1,7 @@
 // The SIP interface specification for:
 //      QwtArrayQwtDoublePoint.
 //
-// Copyright (C) 2001-2008 Gerard Vermeulen
+// Copyright (C) 2001-2009 Gerard Vermeulen
 // Copyright (C) 2000 Mark Colclough
 //
 // This file is part of PyQwt.
@@ -45,20 +45,28 @@ public:
     QwtArrayQwtDoublePoint(const QwtArrayQwtDoublePoint &);
     QwtArrayQwtDoublePoint(SIP_PYLIST); 
 %MethodCode
+    // FIXME
     QwtArray<QwtDoublePoint> array(PyList_GET_SIZE(a0));
 
-    int failed = 0;
     for (int i = 0; i < PyList_GET_SIZE(a0); ++i) {
-        QwtDoublePoint *item =
-            reinterpret_cast<QwtDoublePoint *>(
-                sipForceConvertTo_QwtDoublePoint(
-                    PyList_GET_ITEM(a0, i), &failed));
-                    
-        if (failed) {
-            return 0;
-        }
-
-        array[i] = *item;
+#if SIP_VERSION < 0x040800
+        void *cpp = sipForceConvertToInstance(
+            PyList_GET_ITEM(a0, i),
+            sipClass_QwtDoublePoint,
+            NULL,
+            SIP_NO_CONVERTORS,
+            NULL,
+            &sipIsErr);
+#else
+        void *cpp = sipForceConvertToType(
+            PyList_GET_ITEM(a0, i),
+            sipType_QwtDoublePoint,
+            NULL,
+            SIP_NO_CONVERTORS,
+            NULL,
+            &sipIsErr);
+#endif
+        array[i] = *reinterpret_cast<QwtDoublePoint*>(cpp);
     }
 
     sipCpp = new QwtArrayQwtDoublePoint(array);
